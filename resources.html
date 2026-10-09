@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resources — AI Workspace</title>
+    <meta
+      name="description"
+      content="The design principles, AI states, and keyboard shortcuts behind the AI Workspace product concept."
+    />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#131512"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Resources — AI Workspace" />
+    <meta
+      property="og:description"
+      content="Principles, states, and shortcuts behind the product."
+    />
+    <meta property="og:image" content="assets/og-image.png" />
+    <link rel="icon" href="assets/icons/favicon.png" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-component="header"></div>
+
+    <main id="main">
+      <section class="page-hero" aria-labelledby="page-title">
+        <div class="container">
+          <p class="eyebrow eyebrow--dot" data-rise style="--i: 0">Resources</p>
+          <h1 id="page-title" data-rise style="--i: 1">
+            How AI Workspace is <em>designed.</em>
+          </h1>
+          <p class="page-hero__lead" data-rise style="--i: 2">
+            The principles, states, and shortcuts behind the product, written
+            down so they can be reviewed, not just admired.
+          </p>
+        </div>
+      </section>
+
+      <!-- Principles -->
+      <section
+        class="section"
+        style="padding-top: clamp(2rem, 4vw, 3rem)"
+        aria-labelledby="principles-title"
+      >
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">Design principles</p>
+              <h2 id="principles-title">Six ideas that shape every screen.</h2>
+            </div>
+            <p>
+              They guide decisions from the smallest component to the largest
+              workflow.
+            </p>
+          </div>
+          <ul class="feature-grid">
+            <li class="feature" data-reveal>
+              <span class="tile tile--mint"
+                ><svg class="icon"><use href="#i-doc"></use></svg
+              ></span>
+              <h3>Clarity over cleverness</h3>
+              <p>
+                Hierarchy and plain language carry the intelligence, not
+                decoration.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--coral"
+                ><svg class="icon"><use href="#i-folder"></use></svg
+              ></span>
+              <h3>Context stays visible</h3>
+              <p>
+                Every answer shows the project, sources, and instructions behind
+                it.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--sand"
+                ><svg class="icon"><use href="#i-pen"></use></svg
+              ></span>
+              <h3>Calm motion</h3>
+              <p>
+                Movement explains what changed, then gets out of the way.
+                Reduced motion is respected.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--blue"
+                ><svg class="icon"><use href="#i-chat"></use></svg
+              ></span>
+              <h3>Every state is designed</h3>
+              <p>
+                Empty, loading, error, and success states say what happened and
+                what to do next.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--mauve"
+                ><svg class="icon"><use href="#i-users"></use></svg
+              ></span>
+              <h3>Accessible by default</h3>
+              <p>
+                Keyboard paths, focus handling, and screen-reader labels ship
+                with each component.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--coral"
+                ><svg class="icon"><use href="#i-sparkle"></use></svg
+              ></span>
+              <h3>Honest about AI</h3>
+              <p>
+                Models are illustrative, responses are labeled, and generated
+                work carries a disclosure.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- AI states -->
+      <section
+        class="section section--sage"
+        id="ai-states"
+        aria-labelledby="states-title"
+      >
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">AI states</p>
+              <h2 id="states-title">What happens, why, and what you can do.</h2>
+            </div>
+            <p>
+              Every AI operation answers three questions, so the interface never
+              leaves you guessing.
+            </p>
+          </div>
+          <div
+            class="compare"
+            tabindex="0"
+            role="region"
+            aria-labelledby="states-title"
+            data-reveal
+          >
+            <table>
+              <caption class="visually-hidden">
+                The states of an AI operation and what each means for the user
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">State</th>
+                  <th scope="col">What is happening</th>
+                  <th scope="col">What you can do</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Idle</th>
+                  <td>Ready for a prompt.</td>
+                  <td>Type, attach files, or choose context.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Processing</th>
+                  <td>Your request was received.</td>
+                  <td>Wait a moment or cancel.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Thinking</th>
+                  <td>The model is working through the task.</td>
+                  <td>Stop generation at any time.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Streaming</th>
+                  <td>The answer is arriving.</td>
+                  <td>Stop, or keep reading as it appears.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Complete</th>
+                  <td>The answer is finished.</td>
+                  <td>Copy, edit, regenerate, or rate it.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Cancelled</th>
+                  <td>You stopped the response.</td>
+                  <td>Continue it or start again.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Error</th>
+                  <td>The response could not be generated.</td>
+                  <td>Retry, or edit the prompt.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Rate limited</th>
+                  <td>Too many requests in a short time.</td>
+                  <td>Wait for the countdown, then retry.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Context limit</th>
+                  <td>The conversation is too long for the model.</td>
+                  <td>Start a new thread or remove sources.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Service unavailable</th>
+                  <td>The AI service is not responding.</td>
+                  <td>Try again shortly. Your draft is kept.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shortcuts -->
+      <section class="section" id="shortcuts" aria-labelledby="shortcuts-title">
+        <div class="container split">
+          <div data-reveal>
+            <p class="eyebrow">Keyboard</p>
+            <h2 id="shortcuts-title">Made for the <em>keyboard</em>, too.</h2>
+            <p class="split__lead">
+              The shortcuts planned for the workspace. On Windows and Linux use
+              Ctrl in place of ⌘.
+            </p>
+          </div>
+          <ul class="shortcut-list">
+            <li data-reveal>
+              <span>Search everything</span
+              ><span><kbd class="kbd">⌘</kbd><kbd class="kbd">K</kbd></span>
+            </li>
+            <li data-reveal>
+              <span>New conversation</span
+              ><span><kbd class="kbd">⌘</kbd><kbd class="kbd">N</kbd></span>
+            </li>
+            <li data-reveal>
+              <span>Send message</span><span><kbd class="kbd">Enter</kbd></span>
+            </li>
+            <li data-reveal>
+              <span>New line in the composer</span
+              ><span
+                ><kbd class="kbd">Shift</kbd><kbd class="kbd">Enter</kbd></span
+              >
+            </li>
+            <li data-reveal>
+              <span>Stop generating or close a dialog</span
+              ><span><kbd class="kbd">Esc</kbd></span>
+            </li>
+            <li data-reveal>
+              <span>Focus the composer</span
+              ><span><kbd class="kbd">/</kbd></span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cta" aria-labelledby="cta-title">
+        <div class="container" data-reveal>
+          <p class="eyebrow">Make space for better work</p>
+          <h2 id="cta-title">Bring your thinking into <em>focus.</em></h2>
+          <p>Explore an interactive portfolio demo of AI Workspace.</p>
+          <a class="btn btn--light" href="signup.html"
+            >Open the workspace
+            <svg class="icon icon--arrow" aria-hidden="true">
+              <use href="#i-arrow"></use></svg
+          ></a>
+        </div>
+      </section>
+    </main>
+
+    <div data-component="footer"></div>
+    <script src="js/components.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
