@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Security — AI Workspace</title>
+    <meta
+      name="description"
+      content="How AI Workspace is designed to keep context, permissions, and sharing understandable: private by default, clear roles, and visible sources."
+    />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#131512"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Security — AI Workspace" />
+    <meta
+      property="og:description"
+      content="Clear context. Clear permissions."
+    />
+    <meta property="og:image" content="assets/og-image.png" />
+    <link rel="icon" href="assets/icons/favicon.png" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-component="header"></div>
+
+    <main id="main">
+      <section class="page-hero" aria-labelledby="page-title">
+        <div class="container">
+          <p class="eyebrow eyebrow--dot" data-rise style="--i: 0">Security</p>
+          <h1 id="page-title" data-rise style="--i: 1">
+            Clear context. Clear <em>permissions.</em>
+          </h1>
+          <p class="page-hero__lead" data-rise style="--i: 2">
+            AI Workspace is designed so you can always tell what the AI can see,
+            who can see your work, and where an answer came from.
+          </p>
+          <p class="callout" data-rise style="--i: 3">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-shield"></use>
+            </svg>
+            <span
+              >AI Workspace is an interactive product concept. This page
+              describes how its controls are designed, and makes no claims about
+              certifications or compliance.</span
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- Principles -->
+      <section
+        class="section"
+        style="padding-top: clamp(2rem, 4vw, 3rem)"
+        aria-labelledby="principles-title"
+      >
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">Design principles</p>
+              <h2 id="principles-title">Boundaries you can read.</h2>
+            </div>
+            <p>
+              Each control is built to be understood at a glance, so nobody has
+              to guess what is private, what is shared, and what the AI used.
+            </p>
+          </div>
+          <ul class="feature-grid">
+            <li class="feature" data-reveal>
+              <span class="tile tile--coral"
+                ><svg class="icon"><use href="#i-lock"></use></svg
+              ></span>
+              <h3>Private by default</h3>
+              <p>
+                New projects, conversations, and documents start visible only to
+                you.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--mint"
+                ><svg class="icon"><use href="#i-shield"></use></svg
+              ></span>
+              <h3>Visibility you can read</h3>
+              <p>
+                Every item shows plainly whether it is private, workspace, or
+                shared by link.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--sand"
+                ><svg class="icon"><use href="#i-doc"></use></svg
+              ></span>
+              <h3>Sources stay attributed</h3>
+              <p>
+                Answers point back to the passages and files they used, so
+                claims can be checked.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--blue"
+                ><svg class="icon"><use href="#i-users"></use></svg
+              ></span>
+              <h3>Roles, not guesswork</h3>
+              <p>
+                Owner, Admin, and Member each have a defined, documented set of
+                actions.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--mauve"
+                ><svg class="icon"><use href="#i-link"></use></svg
+              ></span>
+              <h3>Shared links, bounded</h3>
+              <p>
+                A shared link exposes only the item you chose, never the project
+                around it.
+              </p>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--coral"
+                ><svg class="icon"><use href="#i-sparkle"></use></svg
+              ></span>
+              <h3>Honest about AI</h3>
+              <p>
+                Generated work carries a disclosure, and demo models are labeled
+                as illustrative.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Visibility levels -->
+      <section
+        class="section section--inverse"
+        id="visibility"
+        aria-labelledby="visibility-title"
+      >
+        <div class="container split">
+          <div data-reveal>
+            <p class="eyebrow">Sharing</p>
+            <h2 id="visibility-title">Three levels. No <em>surprises.</em></h2>
+            <p class="split__lead">
+              Visibility is set per item and always shown next to it, so sharing
+              is a decision you can see.
+            </p>
+          </div>
+          <ol class="steps">
+            <li data-reveal>
+              <span class="steps__num">01</span>
+              <div>
+                <h3>Private</h3>
+                <p>
+                  Only you can see it. This is the starting point for everything
+                  you create.
+                </p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span class="steps__num">02</span>
+              <div>
+                <h3>Workspace</h3>
+                <p>
+                  Everyone in the workspace can find and open it, according to
+                  their role.
+                </p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span class="steps__num">03</span>
+              <div>
+                <h3>Shared link</h3>
+                <p>
+                  Anyone with the link can view that one item. Private context
+                  around it stays private.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Roles -->
+      <section class="section" id="roles" aria-labelledby="roles-title">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">Roles</p>
+              <h2 id="roles-title">Who can do what.</h2>
+            </div>
+            <p>
+              Three roles cover everyday collaboration, and no role can open
+              another person’s private work.
+            </p>
+          </div>
+          <div
+            class="compare"
+            tabindex="0"
+            role="region"
+            aria-labelledby="roles-title"
+            data-reveal
+          >
+            <table>
+              <caption class="visually-hidden">
+                Actions available to the Owner, Admin, and Member roles
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span class="visually-hidden">Action</span>
+                  </th>
+                  <th scope="col">Owner</th>
+                  <th scope="col">Admin</th>
+                  <th scope="col">Member</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" colspan="4">Workspace</th>
+                </tr>
+                <tr>
+                  <th scope="row">Rename the workspace and manage billing</th>
+                  <td>Yes</td>
+                  <td>No</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <th scope="row">Invite and remove members</th>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <th scope="row">Change member roles</th>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>No</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" colspan="4">Work</th>
+                </tr>
+                <tr>
+                  <th scope="row">Create projects and conversations</th>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <th scope="row">Share your own work</th>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <th scope="row">Comment on shared work</th>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th scope="rowgroup" colspan="4">Privacy</th>
+                </tr>
+                <tr>
+                  <th scope="row">Open another person’s private items</th>
+                  <td>No</td>
+                  <td>No</td>
+                  <td>No</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section
+        class="section"
+        style="padding-top: 0"
+        aria-labelledby="faq-title"
+      >
+        <div class="container split split--faq">
+          <div data-reveal>
+            <p class="eyebrow">Common questions</p>
+            <h2 id="faq-title">Plainly answered.</h2>
+          </div>
+          <ul class="accordion" data-accordion data-reveal>
+            <li class="accordion__item">
+              <h3>
+                <button
+                  class="accordion__trigger"
+                  type="button"
+                  id="sq-1-btn"
+                  aria-expanded="true"
+                  aria-controls="sq-1"
+                >
+                  Who can see my work?<svg class="icon" aria-hidden="true">
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+              </h3>
+              <div
+                class="accordion__panel is-open"
+                id="sq-1"
+                role="region"
+                aria-labelledby="sq-1-btn"
+              >
+                <div>
+                  <p>
+                    Only you, until you change it. Each item shows its
+                    visibility, and moving it to the workspace or a shared link
+                    is always an explicit choice.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="accordion__item">
+              <h3>
+                <button
+                  class="accordion__trigger"
+                  type="button"
+                  id="sq-2-btn"
+                  aria-expanded="false"
+                  aria-controls="sq-2"
+                >
+                  What does a shared link expose?<svg
+                    class="icon"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+              </h3>
+              <div
+                class="accordion__panel"
+                id="sq-2"
+                role="region"
+                aria-labelledby="sq-2-btn"
+              >
+                <div>
+                  <p>
+                    Only the item it points to. Other items in the project, its
+                    instructions, and its private sources are not part of what
+                    the link shows.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="accordion__item">
+              <h3>
+                <button
+                  class="accordion__trigger"
+                  type="button"
+                  id="sq-3-btn"
+                  aria-expanded="false"
+                  aria-controls="sq-3"
+                >
+                  Is this a certified product?<svg
+                    class="icon"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+              </h3>
+              <div
+                class="accordion__panel"
+                id="sq-3"
+                role="region"
+                aria-labelledby="sq-3-btn"
+              >
+                <div>
+                  <p>
+                    No. AI Workspace is a design and engineering concept. It
+                    describes how permissions and sharing could work, and does
+                    not claim any certification or compliance.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cta" aria-labelledby="cta-title">
+        <div class="container" data-reveal>
+          <p class="eyebrow">Make space for better work</p>
+          <h2 id="cta-title">Bring your thinking into <em>focus.</em></h2>
+          <p>Explore an interactive portfolio demo of AI Workspace.</p>
+          <a class="btn btn--light" href="signup.html"
+            >Open the workspace
+            <svg class="icon icon--arrow" aria-hidden="true">
+              <use href="#i-arrow"></use></svg
+          ></a>
+        </div>
+      </section>
+    </main>
+
+    <div data-component="footer"></div>
+    <script src="js/components.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
