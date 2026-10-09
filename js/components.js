@@ -11,7 +11,8 @@
     <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.5-3.2 2.7-5 5.5-5s5 1.8 5.5 5M16 6a3 3 0 010 5.6M17.5 14.2c1.9.6 3.1 2.2 3.5 4.8"/></symbol>
     <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M4 7.5l8 6 8-6"/></symbol>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.6-3.7 3.3-5.8 7-5.8s6.4 2.1 7 5.8"/></symbol>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="i-logo" viewBox="0 0 24 24"><path fill="currentColor" d="M9.6 4.8h7.4l-1.9 3.4H7.7zM7.9 10.3h8.8l-1.9 3.4H6zM6.5 15.8h7.4l-1.9 3.4H4.6z"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>

@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Set up your workspace — AI Workspace</title>
+    <meta
+      name="description"
+      content="Answer three quick questions to set up your AI Workspace."
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#20231f" />
+    <link rel="icon" href="assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/onboarding.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="auth auth--onboarding">
+      <aside class="auth__aside" aria-label="About setup">
+        <a class="logo" href="index.html" aria-label="AI Workspace — home">
+          <span class="logo__mark"
+            ><svg class="icon" aria-hidden="true">
+              <use href="#i-logo"></use></svg
+          ></span>
+          <span>AI Workspace</span>
+        </a>
+
+        <div class="auth__intro">
+          <p class="eyebrow eyebrow--dot" data-rise style="--i: 0">
+            Set up your workspace
+          </p>
+          <p class="auth__display" data-rise style="--i: 1">
+            Make it yours<br />in <em>a minute.</em>
+          </p>
+          <p class="auth__lead" data-rise style="--i: 2">
+            Three quick questions help the workspace start with the right
+            context. Skip any of them, and change everything later.
+          </p>
+        </div>
+
+        <ol
+          class="setup-steps"
+          data-rise
+          style="--i: 3"
+          aria-label="Setup steps"
+        >
+          <li data-setup-step>
+            <span class="setup-steps__num"
+              ><span>1</span
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-check"></use></svg></span
+            >What you’ll use it for
+          </li>
+          <li data-setup-step>
+            <span class="setup-steps__num"
+              ><span>2</span
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-check"></use></svg></span
+            >How you’ll work
+          </li>
+          <li data-setup-step>
+            <span class="setup-steps__num"
+              ><span>3</span
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-check"></use></svg></span
+            >Name your workspace
+          </li>
+        </ol>
+      </aside>
+
+      <main class="auth__main" id="main">
+        <button
+          class="icon-btn theme-toggle auth__theme"
+          type="button"
+          data-theme-toggle
+          aria-label="Switch to dark theme"
+        >
+          <svg class="icon icon--moon" aria-hidden="true">
+            <use href="#i-moon"></use>
+          </svg>
+          <svg class="icon icon--sun" aria-hidden="true">
+            <use href="#i-sun"></use>
+          </svg>
+        </button>
+
+        <div class="auth__card auth__card--wide" data-rise style="--i: 2">
+          <h1 class="visually-hidden">Set up your AI Workspace</h1>
+
+          <form data-onboarding novalidate>
+            <div class="onboarding__head">
+              <p class="onboarding__count">
+                <span data-step-count aria-live="polite">Step 1 of 3</span
+                ><span>Setup</span>
+              </p>
+              <div
+                class="progress"
+                role="progressbar"
+                aria-label="Setup progress"
+                aria-valuemin="1"
+                aria-valuemax="3"
+                aria-valuenow="1"
+                aria-valuetext="Step 1 of 3"
+                data-progress
+              >
+                <span class="progress__bar"></span>
+              </div>
+            </div>
+
+            <!-- ===== Step 1 ===== -->
+            <section class="step" data-step>
+              <h2 id="s1-title" tabindex="-1" data-heading>
+                What do you use AI for?
+              </h2>
+              <p class="step__lead">
+                Choose everything that applies. It helps the workspace suggest
+                the right starting points.
+              </p>
+              <div class="field" data-field>
+                <fieldset
+                  aria-labelledby="s1-title"
+                  aria-describedby="s1-error"
+                >
+                  <div class="choice-grid">
+                    <label class="choice"
+                      ><input
+                        type="checkbox"
+                        name="uses"
+                        value="Writing"
+                      /><span class="choice__box"
+                        ><span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg></span
+                        >Writing</span
+                      ></label
+                    >
+                    <label class="choice"
+                      ><input
+                        type="checkbox"
+                        name="uses"
+                        value="Research"
+                      /><span class="choice__box"
+                        ><span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg></span
+                        >Research</span
+                      ></label
+                    >
+                    <label class="choice"
+                      ><input
+                        type="checkbox"
+                        name="uses"
+                        value="Business"
+                      /><span class="choice__box"
+                        ><span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg></span
+                        >Business</span
+                      ></label
+                    >
+                    <label class="choice"
+                      ><input type="checkbox" name="uses" value="Coding" /><span
+                        class="choice__box"
+                        ><span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg></span
+                        >Coding</span
+                      ></label
+                    >
+                    <label class="choice"
+                      ><input
+                        type="checkbox"
+                        name="uses"
+                        value="Marketing"
+                      /><span class="choice__box"
+                        ><span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg></span
+                        >Marketing</span
+                      ></label
+                    >
+                    <label class="choice"
+                      ><input
+                        type="checkbox"
+                        name="uses"
+                        value="Productivity"
+                      /><span class="choice__box"
+                        ><span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg></span
+                        >Productivity</span
+                      ></label
+                    >
+                    <label class="choice"
+                      ><input
+                        type="checkbox"
+                        name="uses"
+                        value="Analysis"
+                      /><span class="choice__box"
+                        ><span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg></span
+                        >Analysis</span
+                      ></label
+                    >
+                  </div>
+                </fieldset>
+                <p class="field__error" id="s1-error" role="alert">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-close"></use></svg
+                  ><span data-error-text></span>
+                </p>
+              </div>
+            </section>
+
+            <!-- ===== Step 2 ===== -->
+            <section class="step" data-step hidden>
+              <h2 id="s2-title" tabindex="-1" data-heading>
+                How will you use AI Workspace?
+              </h2>
+              <p class="step__lead">
+                This sets up sharing and collaboration. You can switch later.
+              </p>
+              <div class="field" data-field>
+                <fieldset
+                  aria-labelledby="s2-title"
+                  aria-describedby="s2-error"
+                >
+                  <div class="choice-stack">
+                    <label class="choice choice--card">
+                      <input type="radio" name="mode" value="personal" />
+                      <span class="choice__box">
+                        <span class="tile tile--mint"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-user"></use></svg
+                        ></span>
+                        <span class="choice__text"
+                          ><strong>Personally</strong
+                          ><span
+                            >Your own projects, research, and drafts. Everything
+                            starts private.</span
+                          ></span
+                        >
+                        <span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg
+                        ></span>
+                      </span>
+                    </label>
+                    <label class="choice choice--card">
+                      <input type="radio" name="mode" value="team" />
+                      <span class="choice__box">
+                        <span class="tile tile--blue"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-users"></use></svg
+                        ></span>
+                        <span class="choice__text"
+                          ><strong>With a team</strong
+                          ><span
+                            >Shared knowledge, projects, comments, and roles for
+                            everyone you invite.</span
+                          ></span
+                        >
+                        <span class="choice__mark"
+                          ><svg class="icon" aria-hidden="true">
+                            <use href="#i-check"></use></svg
+                        ></span>
+                      </span>
+                    </label>
+                  </div>
+                </fieldset>
+                <p class="field__error" id="s2-error" role="alert">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-close"></use></svg
+                  ><span data-error-text></span>
+                </p>
+              </div>
+            </section>
+
+            <!-- ===== Step 3 ===== -->
+            <section class="step" data-step hidden>
+              <h2 id="s3-title" tabindex="-1" data-heading>
+                Name your workspace
+              </h2>
+              <p class="step__lead" data-name-hint>
+                You can change this later in settings.
+              </p>
+              <div class="field" data-field style="margin-top: 1.75rem">
+                <label for="workspace">Workspace name</label>
+                <input
+                  class="input"
+                  id="workspace"
+                  name="workspace"
+                  type="text"
+                  maxlength="40"
+                  autocomplete="off"
+                  aria-describedby="s3-error"
+                />
+                <p class="field__error" id="s3-error" role="alert">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-close"></use></svg
+                  ><span data-error-text></span>
+                </p>
+              </div>
+            </section>
+
+            <!-- ===== Completion ===== -->
+            <section class="step done" data-step hidden>
+              <span class="tile tile--mint"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-check"></use></svg
+              ></span>
+              <h2 id="done-title" tabindex="-1" data-heading>
+                Your workspace is ready
+              </h2>
+              <p class="step__lead" role="status">
+                Everything below can be changed later in settings.
+              </p>
+              <dl class="summary">
+                <div>
+                  <dt>Workspace</dt>
+                  <dd data-summary-name></dd>
+                </div>
+                <div>
+                  <dt>Using it for</dt>
+                  <dd data-summary-uses></dd>
+                </div>
+                <div>
+                  <dt>Working</dt>
+                  <dd data-summary-mode></dd>
+                </div>
+              </dl>
+              <div class="done__actions">
+                <a class="btn btn--primary" href="app/dashboard.html"
+                  >Enter your workspace
+                  <svg class="icon icon--arrow" aria-hidden="true">
+                    <use href="#i-arrow"></use></svg
+                ></a>
+                <button
+                  class="skip-btn"
+                  type="button"
+                  data-restart
+                  style="margin-left: 0"
+                >
+                  Change answers
+                </button>
+              </div>
+            </section>
+
+            <!-- ===== Actions ===== -->
+            <div class="onboarding__actions" data-actions>
+              <button class="btn btn--secondary" type="button" data-back hidden>
+                Back
+              </button>
+              <button class="btn btn--primary" type="submit" data-next>
+                <span class="btn__spinner" aria-hidden="true"></span>
+                <span data-label>Continue</span>
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use>
+                </svg>
+              </button>
+              <button class="skip-btn" type="button" data-skip>
+                Skip for now
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/components.js" defer></script>
+    <script src="js/onboarding.js" defer></script>
+  </body>
+</html>
