@@ -99,6 +99,7 @@
       slot.replaceWith(tpl.content);
     });
     initHeader();
+    initThemeToggles();
   }
 
   function initHeader() {
@@ -143,19 +144,25 @@
     matchMedia("(min-width: 56.25rem)").addEventListener("change", (e) => {
       if (e.matches) setMenu(false);
     });
+  }
 
-    /* theme toggle */
-    const toggle = header.querySelector("[data-theme-toggle]");
-    const syncToggle = () => {
+  function initThemeToggles() {
+    const toggles = document.querySelectorAll("[data-theme-toggle]");
+    if (!toggles.length) return;
+    const sync = () => {
       const dark = window.aiwTheme.get() === "dark";
-      toggle.setAttribute(
-        "aria-label",
-        dark ? "Switch to light theme" : "Switch to dark theme",
+      toggles.forEach((t) =>
+        t.setAttribute(
+          "aria-label",
+          dark ? "Switch to light theme" : "Switch to dark theme",
+        ),
       );
     };
-    toggle.addEventListener("click", () => window.aiwTheme.toggle());
-    document.addEventListener("themechange", syncToggle);
-    syncToggle();
+    toggles.forEach((t) =>
+      t.addEventListener("click", () => window.aiwTheme.toggle()),
+    );
+    document.addEventListener("themechange", sync);
+    sync();
   }
 
   if (document.readyState === "loading")

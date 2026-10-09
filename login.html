@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign in — AI Workspace</title>
+    <meta
+      name="description"
+      content="Sign in to your AI Workspace and pick up where your work left off."
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#20231f" />
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="auth">
+      <aside class="auth__aside" aria-label="Welcome back">
+        <a class="logo" href="index.html" aria-label="AI Workspace — home">
+          <span class="logo__mark"
+            ><svg class="icon" aria-hidden="true">
+              <use href="#i-logo"></use></svg
+          ></span>
+          <span>AI Workspace</span>
+        </a>
+
+        <div class="auth__intro">
+          <p class="eyebrow eyebrow--dot" data-rise style="--i: 0">
+            Welcome back
+          </p>
+          <p class="auth__display" data-rise style="--i: 1">
+            Pick up where<br />your work <em>left off.</em>
+          </p>
+          <p class="auth__lead" data-rise style="--i: 2">
+            Return to the research, writing, and decisions already taking shape
+            in your workspace.
+          </p>
+        </div>
+
+        <ul class="auth__points" data-rise style="--i: 3">
+          <li>
+            <span
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-check"></use></svg></span
+            >Clear project context
+          </li>
+          <li>
+            <span
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-check"></use></svg></span
+            >Source-aware thinking
+          </li>
+          <li>
+            <span
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-check"></use></svg></span
+            >Understandable sharing
+          </li>
+        </ul>
+      </aside>
+
+      <main class="auth__main" id="main">
+        <button
+          class="icon-btn theme-toggle auth__theme"
+          type="button"
+          data-theme-toggle
+          aria-label="Switch to dark theme"
+        >
+          <svg class="icon icon--moon" aria-hidden="true">
+            <use href="#i-moon"></use>
+          </svg>
+          <svg class="icon icon--sun" aria-hidden="true">
+            <use href="#i-sun"></use>
+          </svg>
+        </button>
+
+        <div class="auth__card" data-rise style="--i: 2">
+          <p class="eyebrow">Sign in</p>
+          <h1>Sign in to AI Workspace</h1>
+          <p>
+            Continue securely to your workspace using the configured account
+            flow.
+          </p>
+
+          <button
+            class="btn btn--primary btn--block"
+            type="button"
+            data-auth-action
+            data-auth-mode="signin"
+            data-loading-label="Signing you in…"
+            data-redirect="app/dashboard.html"
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-sparkle"></use>
+            </svg>
+            <span class="btn__spinner" aria-hidden="true"></span>
+            <span data-auth-label>Continue to sign in</span>
+            <svg class="icon icon--arrow" aria-hidden="true">
+              <use href="#i-arrow"></use>
+            </svg>
+          </button>
+          <p
+            class="visually-hidden"
+            role="status"
+            aria-live="polite"
+            data-auth-status
+          ></p>
+
+          <p class="auth__divider">How it works</p>
+          <div class="auth__note">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-shield"></use>
+            </svg>
+            <p>
+              AI Workspace uses the preconfigured secure OAuth flow. In this
+              product demo, the workspace data and AI responses are
+              illustrative.
+            </p>
+          </div>
+
+          <p class="auth__switch">
+            New to AI Workspace? <a href="signup.html">Create one</a>
+          </p>
+          <a class="auth__back" href="index.html"
+            ><svg class="icon icon--arrow" aria-hidden="true">
+              <use href="#i-arrow"></use></svg
+            >Back to the product overview</a
+          >
+        </div>
+      </main>
+    </div>
+
+    <script src="js/components.js" defer></script>
+    <script src="js/auth.js" defer></script>
+  </body>
+</html>

@@ -163,6 +163,22 @@ h3 em {
   transform: none;
 }
 
+/* ---------- Entrance choreography (shared) ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.js [data-rise] {
+  animation: rise 0.9s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
