@@ -1,0 +1,481 @@
+/* ==========================================================================
+   Inner-page patterns (features, solutions, pricing, security, resources…)
+   Page hero · anchor nav · feature detail rows · product panels
+   Four-plan grid · comparison table
+   ========================================================================== */
+
+/* ---------- Page hero ---------- */
+.page-hero {
+  padding-block: clamp(3rem, 7vw, 6rem) clamp(2.25rem, 4vw, 3.5rem);
+}
+.page-hero h1 {
+  max-width: 15ch;
+  margin-block: 1.3rem 1.4rem;
+  font-size: var(--fs-display);
+  font-weight: 500;
+  line-height: 1.04;
+}
+.page-hero__lead {
+  max-width: 33rem;
+  font-size: var(--fs-lead);
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+.page-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* ---------- Anchor nav (jump links) ---------- */
+.anchor-nav {
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+.anchor-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.anchor-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface-raised);
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+.anchor-nav a:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  transform: translateY(-1px);
+}
+
+/* ---------- Feature detail rows ---------- */
+.detail {
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+  border-top: 1px solid var(--border);
+}
+.detail__grid {
+  display: grid;
+  gap: 2.5rem 5rem;
+  align-items: center;
+}
+.detail h2 {
+  margin-block: 1.1rem 1.1rem;
+  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.6rem);
+}
+.detail__lead {
+  max-width: 30rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+.checks {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.75rem;
+}
+.checks li {
+  display: flex;
+  gap: 0.7rem;
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+.checks .icon {
+  margin-top: 0.2em;
+  color: var(--brand);
+}
+@media (min-width: 56.25rem) {
+  .detail__grid {
+    grid-template-columns: 1fr 1.1fr;
+  }
+  .detail--flip .detail__visual {
+    order: -1;
+  }
+}
+
+/* ---------- Product panels (illustrative mini-screens) ---------- */
+.detail__visual {
+  container-type: inline-size;
+}
+.panel {
+  display: grid;
+  gap: 1em;
+  padding: 1.6em;
+  font-size: calc(100cqw / 36);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 1.4em;
+  box-shadow: var(--shadow-lg);
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-slow) var(--ease-out);
+}
+.panel:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+.panel__label {
+  font-family: var(--font-mono);
+  font-size: 0.6em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+}
+.panel__pill {
+  padding: 0.3em 0.8em;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  font-size: 0.65em;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.bubble {
+  max-width: 92%;
+  padding: 0.9em 1.1em;
+  border-radius: 1em;
+  font-size: 0.82em;
+  line-height: 1.6;
+}
+.bubble--user {
+  justify-self: end;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-bottom-right-radius: 0.3em;
+}
+.bubble--ai {
+  background: var(--band-sage);
+  border-bottom-left-radius: 0.3em;
+}
+.cite {
+  display: inline-block;
+  padding: 0 0.55em;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--brand) 20%, transparent);
+  color: var(--brand);
+  font-size: 0.8em;
+  font-weight: 700;
+}
+.composer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7em 0.7em 0.7em 1.1em;
+  border: 1px solid var(--border);
+  border-radius: 0.95em;
+  font-size: 0.75em;
+  color: var(--text-subtle);
+}
+.composer__send {
+  display: grid;
+  place-items: center;
+  width: 2.1em;
+  height: 2.1em;
+  border-radius: 0.65em;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+.lines {
+  display: grid;
+  gap: 0.6em;
+}
+.line {
+  width: var(--w, 100%);
+  height: 0.5em;
+  border-radius: 1em;
+  background: color-mix(in srgb, var(--text) 10%, transparent);
+}
+.line--hl {
+  background: color-mix(in srgb, var(--c-coral) 38%, transparent);
+}
+.finding {
+  display: flex;
+  gap: 0.8em;
+  padding: 0.9em 1em;
+  border-radius: 0.9em;
+  background: var(--band-sage);
+  font-size: 0.75em;
+  line-height: 1.5;
+}
+.finding .tile {
+  flex: none;
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 0.6em;
+  font-size: 0.95em;
+}
+.finding strong {
+  display: block;
+  font-size: 1.05em;
+}
+.finding span {
+  color: var(--text-muted);
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.4em;
+}
+.toolbar i {
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 0.4em;
+  background: color-mix(in srgb, var(--text) 9%, transparent);
+}
+.draft {
+  font-size: 0.85em;
+  line-height: 1.75;
+}
+.draft mark {
+  padding: 0.05em 0.2em;
+  border-radius: 0.25em;
+  background: color-mix(in srgb, var(--c-sand) 32%, transparent);
+  color: inherit;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  padding: 0.55em;
+  border: 1px solid var(--border);
+  border-radius: 0.9em;
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+}
+.chips span {
+  padding: 0.35em 0.8em;
+  border-radius: 0.6em;
+  font-size: 0.7em;
+  font-weight: 600;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+}
+.chips span:first-child {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-color: transparent;
+}
+
+.stages {
+  display: grid;
+  gap: 0.35em;
+}
+.stage {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0.65em 0.2em;
+  font-size: 0.78em;
+  border-top: 1px solid var(--border);
+}
+.stage:first-child {
+  border-top: 0;
+}
+.stage__dot {
+  display: grid;
+  place-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  font-size: 0.8em;
+}
+.stage--done .stage__dot {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--bg);
+}
+.stage--done .stage__dot .icon {
+  stroke-width: 2.4;
+}
+.stage--active {
+  font-weight: 700;
+}
+.stage--active .stage__dot {
+  border-color: var(--brand);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+.stage--pending {
+  color: var(--text-subtle);
+}
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 0.45em color-mix(in srgb, var(--brand) 0%, transparent);
+  }
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--brand) 40%, transparent);
+  }
+}
+
+.source {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  padding: 0.8em 0;
+  border-top: 1px solid var(--border);
+}
+.source:first-of-type {
+  border-top: 0;
+}
+.source .tile {
+  width: 2.3em;
+  height: 2.3em;
+  border-radius: 0.65em;
+  font-size: 0.95em;
+}
+.source strong {
+  display: block;
+  font-size: 0.82em;
+  font-weight: 600;
+}
+.source small {
+  font-size: 0.65em;
+  color: var(--text-muted);
+}
+.source em {
+  margin-left: auto;
+  padding: 0.25em 0.7em;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+  font-style: normal;
+  font-size: 0.62em;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7em;
+}
+.stat {
+  padding: 0.9em 1em;
+  border-radius: 0.9em;
+  background: var(--band-sage);
+}
+.stat b {
+  display: block;
+  font-size: 1.6em;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+.stat span {
+  font-size: 0.68em;
+  color: var(--text-muted);
+}
+.instruction {
+  padding: 0.9em 1em;
+  border: 1px dashed var(--border-strong);
+  border-radius: 0.9em;
+  font-size: 0.72em;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ---------- Four-plan grid (pricing page) ---------- */
+.plan__amount--text {
+  font-size: 2rem;
+  letter-spacing: -0.045em;
+}
+@media (min-width: 40rem) {
+  .plan-grid--four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 70rem) {
+  .plan-grid--four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pricing__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.pricing__toolbar h2 {
+  margin-top: 1.1rem;
+  font-size: var(--fs-h2);
+}
+
+/* ---------- Comparison table ---------- */
+.compare {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+}
+.compare table {
+  width: 100%;
+  min-width: 46rem;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+.compare caption {
+  text-align: left;
+  padding: 1.25rem 1.5rem 0;
+  font-size: var(--fs-caption);
+  color: var(--text-muted);
+}
+.compare th,
+.compare td {
+  padding: 0.95rem 1.5rem;
+  text-align: left;
+  border-top: 1px solid var(--border);
+}
+.compare thead th {
+  border-top: 0;
+  padding-block: 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.compare tbody th[scope="row"] {
+  font-weight: 500;
+  position: sticky;
+  left: 0;
+  background: var(--surface-raised);
+}
+.compare tbody th[scope="rowgroup"] {
+  padding-block: 1.1rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--surface);
+}
+.compare td {
+  color: var(--text-muted);
+}
+.compare td .icon {
+  font-size: 1.05rem;
+  color: var(--brand);
+  stroke-width: 2;
+}
+.compare tbody tr:not(:has(th[scope="rowgroup"])):hover :is(th, td) {
+  background: color-mix(in srgb, var(--brand) 6%, var(--surface-raised));
+}
+.compare .is-featured {
+  background: color-mix(in srgb, var(--brand) 8%, transparent);
+}
