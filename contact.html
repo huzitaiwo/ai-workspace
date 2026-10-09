@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — AI Workspace</title>
+    <meta
+      name="description"
+      content="Questions about AI Workspace, the Enterprise plan, or the project behind it? Send a message."
+    />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#131512"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact — AI Workspace" />
+    <meta
+      property="og:description"
+      content="Send a message about the product, the Enterprise plan, or the project."
+    />
+    <meta property="og:image" content="assets/og-image.png" />
+    <link rel="icon" href="assets/icons/favicon.png" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-component="header"></div>
+
+    <main id="main">
+      <section class="section" style="padding-top: clamp(3rem, 7vw, 6rem)">
+        <div class="container contact">
+          <div>
+            <p class="eyebrow eyebrow--dot" data-rise style="--i: 0">Contact</p>
+            <h1 data-rise style="--i: 1">
+              Let’s talk about the <em>work.</em>
+            </h1>
+            <p class="page-hero__lead" data-rise style="--i: 2">
+              Questions about the product, the Enterprise plan, or the project
+              behind it? Tell us a little and we’ll point you in the right
+              direction.
+            </p>
+
+            <ul class="info-list" data-rise style="--i: 3">
+              <li>
+                <span class="tile tile--mint"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-chat"></use></svg
+                ></span>
+                <div>
+                  <h2>Product questions</h2>
+                  <p>
+                    How a feature works, or whether it fits the way you work.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="tile tile--blue"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-users"></use></svg
+                ></span>
+                <div>
+                  <h2>Enterprise and teams</h2>
+                  <p>Custom roles, visibility controls, and onboarding.</p>
+                </div>
+              </li>
+              <li>
+                <span class="tile tile--sand"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-mail"></use></svg
+                ></span>
+                <div>
+                  <h2>The project itself</h2>
+                  <p>
+                    Designed and built by Handsome. Say hello about the design
+                    or the code.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="form-card" data-rise style="--i: 2">
+            <form data-contact-form novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input
+                    class="input"
+                    id="name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    required
+                    aria-describedby="name-error"
+                  />
+                  <p class="field__error" id="name-error">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-close"></use></svg
+                    ><span data-error-text></span>
+                  </p>
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    class="input"
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    inputmode="email"
+                    required
+                    aria-describedby="email-error"
+                  />
+                  <p class="field__error" id="email-error">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-close"></use></svg
+                    ><span data-error-text></span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="topic">What is this about?</label>
+                <div class="select">
+                  <select
+                    class="input"
+                    id="topic"
+                    name="topic"
+                    required
+                    aria-describedby="topic-error"
+                  >
+                    <option value="">Choose a topic</option>
+                    <option>A product question</option>
+                    <option>The Enterprise plan</option>
+                    <option>The project or a collaboration</option>
+                    <option>Something else</option>
+                  </select>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </div>
+                <p class="field__error" id="topic-error">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-close"></use></svg
+                  ><span data-error-text></span>
+                </p>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  class="input"
+                  id="message"
+                  name="message"
+                  required
+                  aria-describedby="message-hint message-error"
+                ></textarea>
+                <p class="field__hint" id="message-hint">
+                  A few sentences is plenty.
+                </p>
+                <p class="field__error" id="message-error">
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-close"></use></svg
+                  ><span data-error-text></span>
+                </p>
+              </div>
+
+              <div class="form-card__foot">
+                <p>
+                  This is a portfolio demo. Your message isn’t stored or sent
+                  anywhere yet.
+                </p>
+                <button class="btn btn--primary" type="submit">
+                  <span data-label>Send message</span>
+                  <svg class="icon icon--arrow" aria-hidden="true">
+                    <use href="#i-arrow"></use>
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <div
+              class="form-success"
+              data-contact-success
+              tabindex="-1"
+              role="status"
+            >
+              <span class="tile tile--mint"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-check"></use></svg
+              ></span>
+              <h2>Message ready.</h2>
+              <p>
+                Thanks. In this demo nothing leaves your browser, but this is
+                where a confirmation would appear.
+              </p>
+              <a class="btn btn--secondary" href="index.html"
+                >Back to the overview</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-component="footer"></div>
+    <script src="js/components.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/contact.js" defer></script>
+  </body>
+</html>
