@@ -845,3 +845,96 @@
 .cta .btn {
   margin-top: 1.75rem;
 }
+
+/* ==========================================================================
+   Forms (shared by contact, onboarding, app settings…)
+   ========================================================================== */
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+.field label {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+}
+.field__hint {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+.input {
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--fs-small);
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+.input::placeholder {
+  color: var(--text-subtle);
+}
+.input:hover {
+  border-color: var(--text-subtle);
+}
+.input:focus-visible {
+  outline: 0;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent);
+}
+textarea.input {
+  min-height: 9rem;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.select {
+  position: relative;
+}
+.select .input {
+  appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+.select .icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  translate: 0 -50%;
+  pointer-events: none;
+  color: var(--text-muted);
+}
+
+.field__error {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--error);
+}
+.field--invalid .input {
+  border-color: var(--error);
+}
+.field--invalid .field__error {
+  display: flex;
+}
+
+.kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.7rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 0.4rem;
+  background: var(--surface-raised);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+}

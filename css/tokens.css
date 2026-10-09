@@ -94,6 +94,7 @@
   --c-sand: #a9792f;
   --c-blue: #4a79b0;
   --c-mauve: #86556f;
+  --error: #b8432f;
 
   --shadow-sm: 0 1px 2px rgba(32, 35, 31, 0.06);
   --shadow-md: 0 8px 24px -8px rgba(32, 35, 31, 0.14);
@@ -145,6 +146,7 @@
   --c-sand: #d6a85c;
   --c-blue: #84aee0;
   --c-mauve: #c48fb0;
+  --error: #f0907c;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.55);

@@ -479,3 +479,146 @@
 .compare .is-featured {
   background: color-mix(in srgb, var(--brand) 8%, transparent);
 }
+
+/* ---------- Callout ---------- */
+.callout {
+  display: flex;
+  gap: 0.7rem;
+  max-width: 36rem;
+  margin-top: 1.75rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: var(--note-bg);
+  color: var(--note-text);
+  font-size: var(--fs-caption);
+  line-height: 1.65;
+}
+.callout .icon {
+  margin-top: 0.15rem;
+  font-size: 0.9rem;
+  color: var(--brand);
+}
+
+/* ---------- Contact ---------- */
+.contact {
+  display: grid;
+  gap: 3rem 5rem;
+}
+@media (min-width: 56.25rem) {
+  .contact {
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+  }
+}
+.contact h1 {
+  margin-block: 1.3rem 1.4rem;
+  font-size: var(--fs-display);
+  font-weight: 500;
+  line-height: 1.04;
+}
+
+.info-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.info-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.info-list h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.info-list p {
+  margin-top: 0.25rem;
+  max-width: 30ch;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.form-card {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+.form-card form {
+  display: grid;
+  gap: 1.25rem;
+}
+.form-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+@media (min-width: 40rem) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.form-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.form-card__foot p {
+  max-width: 24rem;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.form-success {
+  display: none;
+  justify-items: start;
+  gap: 1rem;
+  padding-block: 1rem;
+}
+.form-success:focus {
+  outline: 0;
+}
+.form-success h2 {
+  font-size: 1.75rem;
+}
+.form-success p {
+  max-width: 30ch;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.form-card.is-sent form {
+  display: none;
+}
+.form-card.is-sent .form-success {
+  display: grid;
+  animation: rise 0.7s var(--ease-out) both;
+}
+
+/* ---------- Shortcut list ---------- */
+.shortcut-list {
+  border-bottom: 1px solid var(--border);
+}
+.shortcut-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0.25rem;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+}
+.shortcut-list span:last-child {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+/* ---------- FAQ page groups ---------- */
+.faq-group {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
