@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Workspace — Your work, amplified by AI</title>
+    <meta
+      name="description"
+      content="AI Workspace is an original productivity product concept for thinking, creating, analyzing, and collaborating with AI."
+    />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#131512"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="AI Workspace — Your work, amplified by AI"
+    />
+    <meta
+      property="og:description"
+      content="An original AI productivity product concept."
+    />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/home.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AI Workspace",
+        "applicationCategory": "BusinessApplication",
+        "description": "An original AI productivity product concept for thinking, creating, analyzing, and collaborating.",
+        "author": { "@type": "Person", "name": "Handsome" }
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-component="header"></div>
+
+    <main id="main">
+      <!-- ===== Hero ===== -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow eyebrow--dot" data-rise style="--i: 0">
+              Contextual productivity
+            </p>
+            <h1 id="hero-title" data-rise style="--i: 1">
+              Your work, <em>amplified</em> by AI.
+            </h1>
+            <p class="hero__lead" data-rise style="--i: 2">
+              One intelligent workspace for the research, decisions, drafts, and
+              shared context that move real work forward.
+            </p>
+            <div class="hero__actions" data-rise style="--i: 3">
+              <a class="btn btn--primary" href="signup.html"
+                >Explore the workspace
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+              <a class="btn btn--secondary" href="#workflow"
+                >See how it works</a
+              >
+            </div>
+            <p class="hero__note" data-rise style="--i: 4">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-shield"></use>
+              </svg>
+              Designed to make context visible, not obscure it.
+            </p>
+          </div>
+
+          <figure class="hero__visual">
+            <div
+              class="preview"
+              data-tilt
+              role="img"
+              aria-label="Preview of the AI Workspace home screen showing a greeting, a project in progress, usage, and a sourced AI answer"
+            >
+              <div class="preview__side" aria-hidden="true">
+                <span class="preview__logo"
+                  ><svg class="icon"><use href="#i-logo"></use></svg
+                ></span>
+                <span class="preview__item preview__item--active">Home</span>
+                <span class="preview__item">Conversations</span>
+                <span class="preview__item">Projects</span>
+                <span class="preview__item">Documents</span>
+                <span class="preview__item">Writer</span>
+                <span class="preview__avatar">H</span>
+              </div>
+              <div class="preview__main" aria-hidden="true">
+                <div class="preview__bar">
+                  <span>Good morning, Handsome.</span>
+                  <span class="preview__dots"><i></i><i></i></span>
+                </div>
+                <p class="preview__title">What are you working on?</p>
+                <div class="preview__chips">
+                  <span class="preview__chip"
+                    ><svg class="icon"><use href="#i-chat"></use></svg>New
+                    conversation</span
+                  >
+                  <span class="preview__chip"
+                    ><svg class="icon"><use href="#i-doc"></use></svg>Analyze
+                    document</span
+                  >
+                </div>
+                <div class="preview__cards">
+                  <div class="preview__card">
+                    <span class="preview__label">Continue working</span>
+                    <p class="preview__name">Website Redesign Research</p>
+                    <p class="preview__meta">12 sources · Updated 4m ago</p>
+                    <div class="preview__progress"><i></i></div>
+                  </div>
+                  <div class="preview__card preview__card--alt">
+                    <span class="preview__label">At a glance</span>
+                    <p class="preview__value">2.8k</p>
+                    <p class="preview__meta">AI credits remaining</p>
+                    <div class="preview__bars">
+                      <i style="--n: 0; height: 30%"></i
+                      ><i style="--n: 1; height: 55%"></i
+                      ><i style="--n: 2; height: 42%"></i>
+                      <i style="--n: 3; height: 75%"></i
+                      ><i style="--n: 4; height: 50%"></i
+                      ><i style="--n: 5; height: 100%"></i
+                      ><i style="--n: 6; height: 68%"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="preview__msg">
+                  <span class="tile tile--coral"
+                    ><svg class="icon"><use href="#i-sparkle"></use></svg
+                  ></span>
+                  <div>
+                    <span class="preview__label">Workspace Reason</span>
+                    <p>
+                      I found three recurring themes in the interview notes,
+                      each linked to a source.
+                    </p>
+                    <span class="preview__src"
+                      >Source · Interview synthesis</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <figcaption class="hero__caption">
+              A workspace that keeps the work in view.
+            </figcaption>
+          </figure>
+        </div>
+        <hr class="rule container" style="margin-top: clamp(3rem, 6vw, 5rem)" />
+      </section>
+
+      <!-- ===== Features ===== -->
+      <section class="section" id="features" aria-labelledby="features-title">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div>
+              <p class="eyebrow">A more deliberate way to work</p>
+              <h2 id="features-title">
+                All the intelligence. None of the noise.
+              </h2>
+            </div>
+            <p>
+              AI Workspace brings the tools around a task into one connected
+              place, so you spend less time rebuilding context and more time
+              making progress.
+            </p>
+          </div>
+
+          <ul class="feature-grid">
+            <li class="feature" data-reveal>
+              <span class="tile tile--coral"
+                ><svg class="icon"><use href="#i-chat"></use></svg
+              ></span>
+              <h3>AI Chat</h3>
+              <p>Conversations that begin with the work already in context.</p>
+              <a class="text-link" href="features.html#ai-chat"
+                >Explore
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--mint"
+                ><svg class="icon"><use href="#i-doc"></use></svg
+              ></span>
+              <h3>Document intelligence</h3>
+              <p>
+                Read contracts, research, and notes with a clear trail back to
+                the source.
+              </p>
+              <a class="text-link" href="features.html#document-intelligence"
+                >Explore
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--sand"
+                ><svg class="icon"><use href="#i-pen"></use></svg
+              ></span>
+              <h3>AI Writer</h3>
+              <p>
+                Move from raw thinking to a considered first draft in one calm
+                space.
+              </p>
+              <a class="text-link" href="features.html#ai-writer"
+                >Explore
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--blue"
+                ><svg class="icon"><use href="#i-sparkle"></use></svg
+              ></span>
+              <h3>Reports</h3>
+              <p>
+                Synthesize selected source material into reviewable decisions.
+              </p>
+              <a class="text-link" href="features.html#reports"
+                >Explore
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--mauve"
+                ><svg class="icon"><use href="#i-book"></use></svg
+              ></span>
+              <h3>Knowledge</h3>
+              <p>
+                Create a trusted library that gives every answer the right
+                frame.
+              </p>
+              <a class="text-link" href="features.html#knowledge"
+                >Explore
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+            <li class="feature" data-reveal>
+              <span class="tile tile--coral"
+                ><svg class="icon"><use href="#i-folder"></use></svg
+              ></span>
+              <h3>Projects</h3>
+              <p>
+                Keep related conversations, files, and outcomes in a single
+                place.
+              </p>
+              <a class="text-link" href="features.html#projects"
+                >Explore
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== Workflow ===== -->
+      <section
+        class="section section--inverse"
+        id="workflow"
+        aria-labelledby="workflow-title"
+      >
+        <div class="container split">
+          <div data-reveal>
+            <p class="eyebrow">A continuous workflow</p>
+            <h2 id="workflow-title">From question to <em>clarity.</em></h2>
+            <p class="split__lead">
+              Every workspace starts with a question and ends with a decision
+              you can explain.
+            </p>
+            <a
+              class="btn btn--light"
+              href="signup.html"
+              style="margin-top: 1.75rem"
+              >Try the demo
+              <svg class="icon icon--arrow" aria-hidden="true">
+                <use href="#i-arrow"></use></svg
+            ></a>
+          </div>
+          <ol class="steps">
+            <li data-reveal>
+              <span class="steps__num">01</span>
+              <div>
+                <h3>Gather</h3>
+                <p>
+                  Bring together conversations, source files, and team knowledge
+                  in the project that needs them.
+                </p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span class="steps__num">02</span>
+              <div>
+                <h3>Understand</h3>
+                <p>
+                  Ask questions, compare documents, and follow citations until
+                  patterns start to appear.
+                </p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span class="steps__num">03</span>
+              <div>
+                <h3>Create</h3>
+                <p>
+                  Turn the insight into a draft, a brief, or a structured report
+                  without changing context.
+                </p>
+              </div>
+            </li>
+            <li data-reveal>
+              <span class="steps__num">04</span>
+              <div>
+                <h3>Share</h3>
+                <p>
+                  Bring the work back to your team with comments, clear
+                  ownership, and an activity trail.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== Use cases ===== -->
+      <section class="section" id="solutions" aria-labelledby="solutions-title">
+        <div class="container split">
+          <div data-reveal>
+            <p class="eyebrow">Made for the shape of your work</p>
+            <h2 id="solutions-title">One workspace. Many ways forward.</h2>
+          </div>
+          <ul class="link-list">
+            <li data-reveal>
+              <a href="solutions.html#research"
+                ><span class="link-list__num">01</span>Research &amp;
+                strategy<svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+            <li data-reveal>
+              <a href="solutions.html#writing"
+                ><span class="link-list__num">02</span>Writing &amp;
+                proposals<svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+            <li data-reveal>
+              <a href="solutions.html#team-knowledge"
+                ><span class="link-list__num">03</span>Team knowledge<svg
+                  class="icon icon--arrow"
+                  aria-hidden="true"
+                >
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+            <li data-reveal>
+              <a href="solutions.html#product"
+                ><span class="link-list__num">04</span>Product thinking<svg
+                  class="icon icon--arrow"
+                  aria-hidden="true"
+                >
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== Pricing ===== -->
+      <section
+        class="section section--sage"
+        id="pricing"
+        aria-labelledby="pricing-title"
+        data-billing
+      >
+        <div class="container">
+          <div class="pricing__head" data-reveal>
+            <div>
+              <p class="eyebrow">Simple by design</p>
+              <h2 id="pricing-title">Start where the work is.</h2>
+            </div>
+            <div
+              class="billing-toggle"
+              role="group"
+              aria-label="Billing period"
+            >
+              <button
+                type="button"
+                data-billing-option="monthly"
+                aria-pressed="false"
+              >
+                Monthly
+              </button>
+              <button
+                type="button"
+                data-billing-option="annual"
+                aria-pressed="true"
+              >
+                Annual <small>Save 20%</small>
+              </button>
+            </div>
+          </div>
+
+          <div class="plan-grid">
+            <article class="plan" data-reveal>
+              <h3>Free</h3>
+              <p class="plan__desc">
+                A focused place to explore AI-assisted work.
+              </p>
+              <p class="plan__price">
+                <span class="plan__amount"
+                  >$<span data-price data-monthly="0" data-annual="0"
+                    >0</span
+                  ></span
+                ><span class="plan__unit">/ seat / month</span>
+              </p>
+              <ul class="plan__features">
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >Core chat
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >3 active projects
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >Basic document analysis
+                </li>
+              </ul>
+              <a class="btn btn--outline btn--block" href="signup.html"
+                >Explore plan
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </article>
+
+            <article class="plan plan--featured" data-reveal>
+              <span class="badge-mono">Most intentional</span>
+              <h3>Pro</h3>
+              <p class="plan__desc">
+                For independent work that benefits from deeper context.
+              </p>
+              <p class="plan__price">
+                <span class="plan__amount"
+                  >$<span data-price data-monthly="30" data-annual="24"
+                    >24</span
+                  ></span
+                ><span class="plan__unit">/ seat / month</span>
+              </p>
+              <ul class="plan__features">
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >Advanced AI models
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >Unlimited projects
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >Reports and writer tools
+                </li>
+              </ul>
+              <a class="btn btn--light btn--block" href="signup.html"
+                >Explore plan
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </article>
+
+            <article class="plan" data-reveal>
+              <h3>Team</h3>
+              <p class="plan__desc">
+                For teams building a shared way of thinking.
+              </p>
+              <p class="plan__price">
+                <span class="plan__amount"
+                  >$<span data-price data-monthly="53" data-annual="42"
+                    >42</span
+                  ></span
+                ><span class="plan__unit">/ seat / month</span>
+              </p>
+              <ul class="plan__features">
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >Shared knowledge
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >Roles and activity
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-check"></use></svg
+                  >Workspace usage controls
+                </li>
+              </ul>
+              <a class="btn btn--outline btn--block" href="signup.html"
+                >Build a workspace
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Security band ===== -->
+      <section class="band" id="security" aria-labelledby="security-title">
+        <div class="band__inner">
+          <div class="band__title">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-shield"></use>
+            </svg>
+            <div>
+              <p class="eyebrow">Built with boundaries</p>
+              <h2 id="security-title">Clear context. Clear permissions.</h2>
+            </div>
+          </div>
+          <p>
+            Projects, sources, and shared work are designed with understandable
+            visibility controls from the start.
+          </p>
+          <a class="text-link" href="security.html"
+            >Explore security
+            <svg class="icon icon--arrow" aria-hidden="true">
+              <use href="#i-arrow"></use></svg
+          ></a>
+        </div>
+      </section>
+
+      <!-- ===== FAQ ===== -->
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="container split split--faq">
+          <div data-reveal>
+            <p class="eyebrow">A few good questions</p>
+            <h2 id="faq-title">Designed to be understood.</h2>
+          </div>
+          <ul class="accordion" data-accordion data-reveal>
+            <li class="accordion__item">
+              <h3>
+                <button
+                  class="accordion__trigger"
+                  type="button"
+                  id="faq-1-btn"
+                  aria-expanded="true"
+                  aria-controls="faq-1"
+                >
+                  Is this a real AI provider?<svg
+                    class="icon"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+              </h3>
+              <div
+                class="accordion__panel is-open"
+                id="faq-1"
+                role="region"
+                aria-labelledby="faq-1-btn"
+              >
+                <div>
+                  <p>
+                    AI Workspace is presented as an interactive product demo.
+                    Its model names and generated responses are illustrative, so
+                    the experience can focus on clear AI product design rather
+                    than provider claims.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="accordion__item">
+              <h3>
+                <button
+                  class="accordion__trigger"
+                  type="button"
+                  id="faq-2-btn"
+                  aria-expanded="false"
+                  aria-controls="faq-2"
+                >
+                  Can I keep work organized by project?<svg
+                    class="icon"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+              </h3>
+              <div
+                class="accordion__panel"
+                id="faq-2"
+                role="region"
+                aria-labelledby="faq-2-btn"
+              >
+                <div>
+                  <p>
+                    Yes. Projects gather related conversations, source files,
+                    prompts, and reports in one place, with instructions that
+                    shape how the workspace responds.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="accordion__item">
+              <h3>
+                <button
+                  class="accordion__trigger"
+                  type="button"
+                  id="faq-3-btn"
+                  aria-expanded="false"
+                  aria-controls="faq-3"
+                >
+                  How does document intelligence work?<svg
+                    class="icon"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+              </h3>
+              <div
+                class="accordion__panel"
+                id="faq-3"
+                role="region"
+                aria-labelledby="faq-3-btn"
+              >
+                <div>
+                  <p>
+                    Open a document, ask a question, and get an answer that
+                    points back to the passages it came from. Summaries,
+                    extractions, and comparisons keep the same trail to the
+                    source.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="accordion__item">
+              <h3>
+                <button
+                  class="accordion__trigger"
+                  type="button"
+                  id="faq-4-btn"
+                  aria-expanded="false"
+                  aria-controls="faq-4"
+                >
+                  Is there a team workspace?<svg
+                    class="icon"
+                    aria-hidden="true"
+                  >
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+              </h3>
+              <div
+                class="accordion__panel"
+                id="faq-4"
+                role="region"
+                aria-labelledby="faq-4-btn"
+              >
+                <div>
+                  <p>
+                    Yes. Team workspaces add shared knowledge, roles, comments,
+                    and an activity trail, with visibility controls for every
+                    project and document.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== Closing CTA ===== -->
+      <section class="cta" aria-labelledby="cta-title">
+        <div class="container" data-reveal>
+          <p class="eyebrow">Make space for better work</p>
+          <h2 id="cta-title">Bring your thinking into <em>focus.</em></h2>
+          <p>Explore an interactive portfolio demo of AI Workspace.</p>
+          <a class="btn btn--light" href="signup.html"
+            >Open the workspace
+            <svg class="icon icon--arrow" aria-hidden="true">
+              <use href="#i-arrow"></use></svg
+          ></a>
+        </div>
+      </section>
+    </main>
+
+    <div data-component="footer"></div>
+
+    <script src="js/components.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/home.js" defer></script>
+  </body>
+</html>
