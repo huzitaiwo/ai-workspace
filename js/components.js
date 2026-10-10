@@ -52,6 +52,8 @@
     <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 013 3L8 19z"/><path d="M14.5 6.5l3 3"/></symbol>
     <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h3.5v16H5zM10.5 4H14v16h-3.5zM16 5.6l3.3-.9 3 14.4-3.3.9z" transform="translate(-1 0)"/></symbol>
     <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7.5A2.5 2.5 0 015.5 5H9l2 2h7.5A2.5 2.5 0 0121 9.5v8a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 17.5z"/><path d="M12 11v5M9.5 13.5h5"/></symbol>
+    <symbol id="i-wand" viewBox="0 0 24 24"><path d="M4 20L14 10M13 5l1.2-2 1.2 2 2 1.2-2 1.2-1.2 2-1.2-2-2-1.2zM18 13l.8 1.5 1.7.9-1.7.9L18 18l-.8-1.7-1.7-.9 1.7-.9z"/></symbol>
+    <symbol id="i-tone" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="2.5"/><path d="M8 10v4M12 8v8M16 10v4"/></symbol>
   </svg>`;
 
   /* ---------- Templates ---------- */

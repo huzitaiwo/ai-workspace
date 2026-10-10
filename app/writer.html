@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>AI Writer - AI Workspace</title>
+    <meta
+      name="description"
+      content="Draft with your project sources close by, and use AI only where you ask for it."
+    />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171a17"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/writer.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app" data-app data-page="writer" data-title="AI Writer">
+      <div data-component="app-sidebar"></div>
+
+      <div class="app__main">
+        <div data-component="app-topbar"></div>
+
+        <main class="writer" id="main" tabindex="-1">
+          <noscript
+            ><p class="empty">
+              AI Workspace needs JavaScript to load your workspace.
+            </p></noscript
+          >
+
+          <!-- ===== Bar ===== -->
+          <div class="writer-bar">
+            <a class="back-link" href="projects.html?id=website-redesign"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg
+              ><span>Back to project</span
+              ><span class="visually-hidden"> Website Redesign</span></a
+            >
+
+            <div class="writer-status">
+              <span class="writer-status__saved" data-saved role="status"
+                ><span class="status-dot" aria-hidden="true"></span
+                ><span data-saved-text>Saved just now</span></span
+              >
+              <div class="menu-wrap">
+                <button
+                  class="version-btn"
+                  type="button"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="menu-versions"
+                  data-menu-trigger
+                >
+                  <span data-version-label>Version 6</span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+                <div
+                  class="menu menu--wide-sm"
+                  id="menu-versions"
+                  role="menu"
+                  aria-label="Version history"
+                  inert
+                ></div>
+              </div>
+            </div>
+
+            <div class="writer-actions">
+              <div class="menu-wrap">
+                <button
+                  class="btn btn--secondary"
+                  type="button"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="menu-export"
+                  data-menu-trigger
+                >
+                  Export
+                </button>
+                <div
+                  class="menu menu--end"
+                  id="menu-export"
+                  role="menu"
+                  aria-label="Export"
+                  inert
+                >
+                  <button
+                    class="menu__item"
+                    type="button"
+                    role="menuitem"
+                    data-export="md"
+                  >
+                    Download Markdown (.md)
+                  </button>
+                  <button
+                    class="menu__item"
+                    type="button"
+                    role="menuitem"
+                    data-export="txt"
+                  >
+                    Download plain text (.txt)
+                  </button>
+                  <div class="menu__sep" role="separator"></div>
+                  <button
+                    class="menu__item"
+                    type="button"
+                    role="menuitem"
+                    data-export="copy"
+                  >
+                    Copy to clipboard
+                  </button>
+                </div>
+              </div>
+              <button class="btn btn--primary" type="button" data-share>
+                Share
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="writer-body">
+            <!-- ===== Left tabs ===== -->
+            <div
+              class="w-tabs"
+              role="tablist"
+              aria-label="Writer sections"
+              aria-orientation="vertical"
+            >
+              <button
+                class="w-tab"
+                role="tab"
+                id="tab-draft"
+                data-tab="draft"
+                aria-selected="true"
+                aria-controls="panel-draft"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-pen"></use></svg
+                >Draft
+              </button>
+              <button
+                class="w-tab"
+                role="tab"
+                id="tab-sources"
+                data-tab="sources"
+                aria-selected="false"
+                tabindex="-1"
+                aria-controls="panel-sources"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-book"></use></svg
+                >Sources
+              </button>
+              <button
+                class="w-tab"
+                role="tab"
+                id="tab-versions"
+                data-tab="versions"
+                aria-selected="false"
+                tabindex="-1"
+                aria-controls="panel-versions"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-clock"></use></svg
+                >Versions
+              </button>
+            </div>
+
+            <!-- ===== Center ===== -->
+            <div class="w-main">
+              <section
+                class="w-panel"
+                id="panel-draft"
+                role="tabpanel"
+                data-panel="draft"
+                aria-labelledby="tab-draft"
+                tabindex="-1"
+              >
+                <label class="visually-hidden" for="w-title">Draft title</label>
+                <input
+                  class="w-title"
+                  id="w-title"
+                  type="text"
+                  data-w-title
+                  placeholder="Untitled draft"
+                  autocomplete="off"
+                  maxlength="120"
+                />
+
+                <div
+                  class="w-toolbar"
+                  role="toolbar"
+                  aria-label="Formatting"
+                  aria-controls="w-text"
+                  data-fmt-bar
+                >
+                  <button
+                    class="fmt fmt--b"
+                    type="button"
+                    data-fmt="bold"
+                    aria-label="Bold"
+                    title="Bold (Ctrl+B)"
+                  >
+                    B
+                  </button>
+                  <button
+                    class="fmt fmt--i"
+                    type="button"
+                    data-fmt="italic"
+                    aria-label="Italic"
+                    title="Italic (Ctrl+I)"
+                  >
+                    I
+                  </button>
+                  <button
+                    class="fmt"
+                    type="button"
+                    data-fmt="h2"
+                    aria-label="Heading 2"
+                  >
+                    H2
+                  </button>
+                  <span class="w-toolbar__sep" aria-hidden="true"></span>
+                  <button
+                    class="fmt"
+                    type="button"
+                    data-fmt="list"
+                    aria-label="Bulleted list"
+                  >
+                    • List
+                  </button>
+                  <button
+                    class="fmt"
+                    type="button"
+                    data-fmt="quote"
+                    aria-label="Quote"
+                  >
+                    Quote
+                  </button>
+                  <span class="w-count" data-w-count aria-live="off"
+                    >0 words</span
+                  >
+                </div>
+
+                <label class="visually-hidden" for="w-text">Draft</label>
+                <textarea
+                  class="w-text"
+                  id="w-text"
+                  data-w-text
+                  data-composer
+                  placeholder="Start writing…"
+                  spellcheck="true"
+                ></textarea>
+
+                <div
+                  class="sel-tools"
+                  role="group"
+                  aria-label="Selection tools"
+                  data-edits
+                >
+                  <span class="sel-tools__label"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-sparkle"></use></svg
+                    >Selection tools</span
+                  >
+                  <button class="sel-chip" type="button" data-edit="improve">
+                    Improve
+                  </button>
+                  <button class="sel-chip" type="button" data-edit="shorten">
+                    Shorten
+                  </button>
+                  <div class="menu-wrap">
+                    <button
+                      class="sel-chip"
+                      type="button"
+                      aria-haspopup="menu"
+                      aria-expanded="false"
+                      aria-controls="menu-tone"
+                      data-menu-trigger
+                      data-tone-trigger
+                    >
+                      Change tone
+                    </button>
+                    <div
+                      class="menu menu--up"
+                      id="menu-tone"
+                      role="menu"
+                      aria-label="Change tone"
+                      inert
+                    >
+                      <button
+                        class="menu__item"
+                        type="button"
+                        role="menuitem"
+                        data-tone="warmer"
+                      >
+                        Warmer
+                      </button>
+                      <button
+                        class="menu__item"
+                        type="button"
+                        role="menuitem"
+                        data-tone="direct"
+                      >
+                        More direct
+                      </button>
+                      <button
+                        class="menu__item"
+                        type="button"
+                        role="menuitem"
+                        data-tone="formal"
+                      >
+                        More formal
+                      </button>
+                    </div>
+                  </div>
+                  <button class="sel-chip" type="button" data-edit="continue">
+                    Continue
+                  </button>
+                  <button
+                    class="sel-chip sel-chip--undo"
+                    type="button"
+                    data-undo
+                    hidden
+                  >
+                    Undo edit
+                  </button>
+                  <span class="sel-tools__busy" data-busy hidden
+                    ><span class="spinner" aria-hidden="true"></span
+                    ><span data-busy-text></span
+                  ></span>
+                </div>
+                <p
+                  class="visually-hidden"
+                  role="status"
+                  aria-live="polite"
+                  data-w-status
+                ></p>
+              </section>
+
+              <section
+                class="w-panel"
+                id="panel-sources"
+                role="tabpanel"
+                data-panel="sources"
+                aria-labelledby="tab-sources"
+                tabindex="-1"
+                hidden
+              >
+                <h2>Sources</h2>
+                <p class="w-panel__lead">
+                  Project sources the AI can use to keep this draft grounded.
+                  Insert a reference to cite one.
+                </p>
+                <ul class="row-list" data-sources-list></ul>
+              </section>
+
+              <section
+                class="w-panel"
+                id="panel-versions"
+                role="tabpanel"
+                data-panel="versions"
+                aria-labelledby="tab-versions"
+                tabindex="-1"
+                hidden
+              >
+                <div class="w-panel__head">
+                  <div>
+                    <h2>Versions</h2>
+                    <p class="w-panel__lead">
+                      Restoring never overwrites anything. It saves a new
+                      version from the old one.
+                    </p>
+                  </div>
+                  <button
+                    class="btn btn--secondary btn--sm"
+                    type="button"
+                    data-save-version
+                  >
+                    Save version
+                  </button>
+                </div>
+                <ul class="row-list" data-versions-list></ul>
+              </section>
+            </div>
+
+            <!-- ===== Writing partner ===== -->
+            <aside class="w-partner" aria-labelledby="partner-title">
+              <div class="w-partner__head">
+                <span class="eyebrow">Writing partner</span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-sparkle"></use>
+                </svg>
+              </div>
+              <h2 id="partner-title">Keep the point clear.</h2>
+              <p class="w-partner__lead">
+                Use the project sources to keep this draft grounded in the
+                research.
+              </p>
+              <ul class="partner-list" data-partner-list>
+                <li>
+                  <button
+                    class="partner-action"
+                    type="button"
+                    data-assist="outline"
+                  >
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-wand"></use></svg
+                    >Suggest an outline<svg class="icon" aria-hidden="true">
+                      <use href="#i-chevron-right"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="partner-action"
+                    type="button"
+                    data-assist="sources"
+                  >
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-doc"></use></svg
+                    >Check against sources<svg class="icon" aria-hidden="true">
+                      <use href="#i-chevron-right"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="partner-action"
+                    type="button"
+                    data-assist="tone"
+                  >
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-tone"></use></svg
+                    >Review the tone<svg class="icon" aria-hidden="true">
+                      <use href="#i-chevron-right"></use>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
+              <div
+                class="partner-result"
+                data-partner-result
+                aria-live="polite"
+              ></div>
+            </aside>
+          </div>
+        </main>
+      </div>
+
+      <div data-component="app-bottom-nav"></div>
+    </div>
+
+    <dialog class="dialog" id="share-dialog" aria-labelledby="share-title">
+      <form data-share-form>
+        <div class="dialog__head">
+          <h2 id="share-title">Share this draft</h2>
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="Close"
+            data-dialog-close
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use>
+            </svg>
+          </button>
+        </div>
+        <p class="dialog__lead">
+          Choose who can see it. Your private notes and sources are never
+          exposed.
+        </p>
+        <fieldset style="border: 0; margin: 0; padding: 0; min-width: 0">
+          <legend class="visually-hidden">Visibility</legend>
+          <div class="opt-list">
+            <label class="opt"
+              ><input type="radio" name="visibility" value="private" /><span
+                ><strong>Private</strong
+                ><small>Only you can see this draft.</small></span
+              ></label
+            >
+            <label class="opt"
+              ><input type="radio" name="visibility" value="workspace" /><span
+                ><strong>Workspace</strong
+                ><small
+                  >Everyone in the workspace can find and open it.</small
+                ></span
+              ></label
+            >
+            <label class="opt"
+              ><input type="radio" name="visibility" value="link" /><span
+                ><strong>Shared link</strong
+                ><small
+                  >Anyone with the link can view this draft only.</small
+                ></span
+              ></label
+            >
+          </div>
+        </fieldset>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close>
+            Cancel</button
+          ><button class="btn btn--primary" type="submit">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="../js/components.js" defer></script>
+    <script src="../js/demo-data.js" defer></script>
+    <script src="../js/ai-service.js" defer></script>
+    <script src="../js/ai-writer-service.js" defer></script>
+    <script src="../js/app-shell.js" defer></script>
+    <script src="../js/writer.js" defer></script>
+  </body>
+</html>
