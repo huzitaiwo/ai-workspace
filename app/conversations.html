@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Conversations — AI Workspace</title>
+    <meta
+      name="description"
+      content="Find, revisit, and continue your conversations without losing context."
+    />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171a17"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/list-page.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div
+      class="app"
+      data-app
+      data-page="conversations"
+      data-title="Conversations"
+    >
+      <div data-component="app-sidebar"></div>
+
+      <div class="app__main">
+        <div data-component="app-topbar"></div>
+
+        <main class="page" id="main" tabindex="-1">
+          <noscript
+            ><p class="empty">
+              AI Workspace needs JavaScript to load your workspace.
+            </p></noscript
+          >
+
+          <header class="conv-head">
+            <div>
+              <p class="eyebrow" data-rise style="--i: 0">
+                Conversation history
+              </p>
+              <h1 data-rise style="--i: 1">Your active thinking</h1>
+              <p class="conv-head__sub" data-rise style="--i: 2">
+                Find, revisit, and continue work without losing context.
+              </p>
+            </div>
+            <a
+              class="btn btn--primary btn--lg"
+              href="chat.html?new=1"
+              data-rise
+              style="--i: 2"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-plus"></use></svg
+              >New Conversation</a
+            >
+          </header>
+
+          <div class="conv">
+            <section
+              class="conv-card"
+              aria-labelledby="conv-list-title"
+              data-rise
+              style="--i: 3"
+            >
+              <h2 class="visually-hidden" id="conv-list-title">
+                Conversations
+              </h2>
+              <div data-conv-list></div>
+
+              <div class="pinned">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-chats"></use>
+                </svg>
+                <div class="pinned__text">
+                  <strong>No pinned conversations</strong>
+                  <p>
+                    Pin the discussions you return to most, so they remain close
+                    to the work.
+                  </p>
+                </div>
+                <a class="btn btn--secondary" href="chat.html?new=1"
+                  >Start a conversation
+                  <svg class="icon icon--arrow" aria-hidden="true">
+                    <use href="#i-arrow"></use></svg
+                ></a>
+              </div>
+            </section>
+
+            <aside
+              class="side-card"
+              aria-labelledby="side-title"
+              data-rise
+              style="--i: 4"
+            >
+              <svg class="icon side-card__icon" aria-hidden="true">
+                <use href="#i-grid"></use>
+              </svg>
+              <span class="eyebrow">Workspace view</span>
+              <h2 id="side-title">Designed for the context around the task.</h2>
+              <p>
+                This screen demonstrates the information architecture and state
+                language that carries through the AI Workspace product.
+              </p>
+              <a class="btn btn--secondary" href="chat.html?new=1"
+                >Ask the workspace
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </aside>
+          </div>
+        </main>
+      </div>
+
+      <div data-component="app-bottom-nav"></div>
+    </div>
+
+    <script src="../js/components.js" defer></script>
+    <script src="../js/demo-data.js" defer></script>
+    <script src="../js/app-shell.js" defer></script>
+    <script src="../js/conversations.js" defer></script>
+  </body>
+</html>

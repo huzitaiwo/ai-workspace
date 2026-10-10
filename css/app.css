@@ -1092,3 +1092,51 @@ a.row:hover .tile {
     display: none;
   }
 }
+
+/* ---------- Dialog (modal form) ---------- */
+.dialog {
+  width: min(30rem, calc(100% - 1.5rem));
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow: var(--shadow-xl);
+}
+.dialog[open] {
+  animation: palette-in 0.25s var(--ease-out);
+}
+.dialog::backdrop {
+  background: rgba(10, 12, 9, 0.5);
+  backdrop-filter: blur(3px);
+  animation: fade-in 0.25s var(--ease-out);
+}
+.dialog form {
+  display: grid;
+  gap: 1.1rem;
+}
+.dialog__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dialog__head h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+}
+.dialog__head .icon-btn {
+  margin-right: -0.5rem;
+}
+.dialog__lead {
+  margin-top: -0.5rem;
+  font-size: var(--fs-small);
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}

@@ -1,0 +1,149 @@
+.conv-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+.conv-head .eyebrow {
+  display: block;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+.conv-head h1 {
+  margin-top: 0.7rem;
+  font-size: clamp(2rem, 1.5rem + 1.8vw, 2.3rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+.conv-head__sub {
+  margin-top: 0.5rem;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+.conv-head .btn {
+  gap: 0.7rem;
+}
+@media (max-width: 40rem) {
+  .conv-head .btn {
+    width: 100%;
+  }
+}
+
+.conv {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+@media (min-width: 72rem) {
+  .conv {
+    grid-template-columns: minmax(0, 1fr) 18.75rem;
+    align-items: stretch;
+  }
+}
+
+/* ---------- List card ---------- */
+.conv-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.conv-card .row-list {
+  border-bottom: 0;
+}
+.conv-card .row-list > li:first-child {
+  border-top: 0;
+}
+.conv-card .row {
+  padding: 0.95rem 1rem;
+  border-radius: 0;
+}
+.conv-card a.row:hover {
+  padding-inline: 1.25rem;
+}
+.conv-card .row .tile {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 0.55rem;
+}
+.conv-card .row__body strong {
+  font-size: var(--fs-small);
+}
+
+.pinned {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0.9rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.4rem;
+  background: var(--sidebar-card);
+}
+.pinned > .icon {
+  flex: none;
+  font-size: 1.25rem;
+  color: var(--brand);
+}
+.pinned__text {
+  flex: 1;
+  min-width: 0;
+}
+.pinned strong {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.pinned p {
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.pinned .btn {
+  flex: none;
+  min-height: 2.4rem;
+  padding: 0 1rem;
+}
+
+/* ---------- Side card ---------- */
+.side-card {
+  display: none;
+}
+@media (min-width: 72rem) {
+  .side-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: var(--sidebar-card);
+  }
+}
+.side-card__icon {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--brand);
+}
+.side-card .eyebrow {
+  font-size: 0.5625rem;
+}
+.side-card h2 {
+  margin-top: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+.side-card p {
+  margin-top: 0.8rem;
+  max-width: 30ch;
+  font-size: 0.6875rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.side-card .btn {
+  margin-top: 1.25rem;
+}

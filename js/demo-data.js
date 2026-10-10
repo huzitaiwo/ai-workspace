@@ -98,6 +98,7 @@ window.aiwData = (() => {
         title: "Website Redesign",
         meta: "8 sources",
         progress: 72,
+        tag: "Active",
         tint: "coral",
         instructions:
           "Prioritize UX research, conversion clarity, accessibility, and responsive behavior.",
@@ -109,6 +110,7 @@ window.aiwData = (() => {
         title: "Northstar Launch",
         meta: "5 active threads",
         progress: 46,
+        tag: "Shared",
         tint: "mint",
         instructions:
           "Keep launch messaging consistent and cite the source behind every claim.",
@@ -119,6 +121,7 @@ window.aiwData = (() => {
         title: "Insight Program",
         meta: "12 tagged notes",
         progress: 84,
+        tag: "Active",
         tint: "sand",
         instructions:
           "Group findings into themes and note how many sources support each one.",
