@@ -1,234 +1,133 @@
 /* ==========================================================================
    Demo data shared by every app page.
-   Only the owner (Handsome) is named. Other people are intentionally left
-   unnamed until real names are supplied. Times are "minutes ago".
+   Owner = Handsome. Workspace and teammate names come from your screenshots
+   (Studio North, Faridah, Warwick) — swap them here when you want different ones.
    ========================================================================== */
 window.aiwData = (() => {
-  const ago = (m) =>
-    m < 1
-      ? "Just now"
-      : m < 60
-        ? `${m}m ago`
-        : m < 1440
-          ? `${Math.round(m / 60)}h ago`
-          : m < 2880
-            ? "Yesterday"
-            : `${Math.round(m / 1440)}d ago`;
-
-  const types = {
-    conversation: {
-      label: "Conversation",
-      icon: "chat",
-      tint: "coral",
-      href: (id) => `chat.html?id=${id}`,
-    },
-    project: {
-      label: "Project",
-      icon: "folder",
-      tint: "mint",
-      href: (id) => `project.html?id=${id}`,
-    },
-    document: {
-      label: "Document",
-      icon: "doc",
-      tint: "sand",
-      href: (id) => `document.html?id=${id}`,
-    },
-    report: {
-      label: "Report",
-      icon: "report",
-      tint: "blue",
-      href: (id) => `report.html?id=${id}`,
-    },
-    prompt: {
-      label: "Prompt",
-      icon: "prompt",
-      tint: "mauve",
-      href: (id) => `prompts.html?id=${id}`,
-    },
+  const ago = (m) => {
+    if (m < 1) return "Just now";
+    if (m < 60) return `${m} min ago`;
+    if (m < 1440) return `${Math.round(m / 60)}h ago`;
+    if (m < 2880) return "Yesterday";
+    return new Date(Date.now() - m * 60000).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    });
   };
 
   return {
     owner: "Handsome",
-    plan: "Pro",
-    unreadNotifications: 3,
+    workspace: "Studio North",
     ago,
-    types,
 
-    projects: [
+    sessions: [
       {
-        id: "website-redesign",
+        id: "website-redesign-research",
         title: "Website Redesign Research",
-        sources: 12,
-        progress: 72,
-        updated: 4,
+        stage: "Source synthesis",
+        updated: 14,
+        tag: "Research",
+        tint: "coral",
       },
       {
-        id: "q4-roadmap",
-        title: "Q4 Product Roadmap",
-        sources: 8,
-        progress: 40,
-        updated: 300,
-      },
-      {
-        id: "competitor-landscape",
-        title: "Competitor Landscape",
-        sources: 5,
-        progress: 25,
-        updated: 4300,
-      },
-    ],
-    conversations: [
-      {
-        id: "checkout-friction",
-        title: "Checkout friction themes",
-        project: "Website Redesign Research",
-        updated: 22,
-      },
-      {
-        id: "pricing-copy",
-        title: "Pricing page copy options",
-        project: "Website Redesign Research",
-        updated: 95,
-      },
-      {
-        id: "onboarding-survey",
-        title: "Summarize the onboarding survey",
-        project: "Q4 Product Roadmap",
+        id: "northstar-positioning-brief",
+        title: "Northstar positioning brief",
+        stage: "Drafting",
         updated: 1500,
+        tag: "Writing",
+        tint: "mint",
       },
       {
-        id: "roadmap-tradeoffs",
-        title: "Roadmap trade-offs for Q4",
-        project: "Q4 Product Roadmap",
-        updated: 3000,
+        id: "customer-insight-themes",
+        title: "Customer insight themes",
+        stage: "Analysis",
+        updated: 4000,
+        tag: "Analysis",
+        tint: "blue",
       },
     ],
     documents: [
       {
-        id: "interview-notes",
-        title: "Customer interview notes",
-        ext: "pdf",
-        size: "2.4 MB",
+        id: "interview-synthesis",
+        name: "Interview synthesis.pdf",
+        ext: "PDF",
         status: "ready",
-        project: "Website Redesign Research",
-        updated: 48,
       },
       {
-        id: "service-agreement",
-        title: "Service agreement",
-        ext: "docx",
-        size: "186 KB",
+        id: "navigation-audit",
+        name: "Navigation audit.docx",
+        ext: "DOCX",
+        status: "ready",
+      },
+      {
+        id: "competitor-patterns",
+        name: "Competitor patterns.csv",
+        ext: "CSV",
         status: "processing",
-        project: "Q4 Product Roadmap",
-        updated: 6,
-      },
-      {
-        id: "survey-results",
-        title: "Q3 survey results",
-        ext: "csv",
-        size: "412 KB",
-        status: "ready",
-        project: "Q4 Product Roadmap",
-        updated: 2000,
-      },
-      {
-        id: "competitor-pricing",
-        title: "Competitor pricing",
-        ext: "xlsx",
-        size: "96 KB",
-        status: "ready",
-        project: "Competitor Landscape",
-        updated: 4400,
       },
     ],
-    reports: [
+    projects: [
       {
-        id: "customer-feedback",
-        title: "Customer feedback report",
-        project: "Website Redesign Research",
-        status: "ready",
-        updated: 130,
+        id: "website-redesign",
+        title: "Website Redesign",
+        meta: "8 sources",
+        progress: 72,
+        tint: "coral",
       },
       {
-        id: "competitor-analysis",
-        title: "Competitor analysis",
-        project: "Competitor Landscape",
-        status: "draft",
-        updated: 5000,
-      },
-    ],
-    prompts: [
-      {
-        id: "summarize-research",
-        title: "Summarize research notes",
-        category: "Research",
-        updated: 9000,
+        id: "northstar-launch",
+        title: "Northstar Launch",
+        meta: "5 active threads",
+        progress: 46,
+        tint: "mint",
       },
       {
-        id: "project-brief",
-        title: "Write a project brief",
-        category: "Product",
-        updated: 9000,
-      },
-      {
-        id: "compare-documents",
-        title: "Compare two documents",
-        category: "Productivity",
-        updated: 9000,
-      },
-      {
-        id: "proposal-outline",
-        title: "Draft a proposal outline",
-        category: "Business",
-        updated: 9000,
+        id: "insight-program",
+        title: "Insight Program",
+        meta: "12 tagged notes",
+        progress: 84,
+        tint: "sand",
       },
     ],
-
-    usage: {
-      creditsLeft: 2800,
-      creditsTotal: 10000,
-      documents: 18,
-      reports: 4,
-      days: [
-        ["M", 38],
-        ["T", 52],
-        ["W", 44],
-        ["T", 68],
-        ["F", 50],
-        ["S", 22],
-        ["S", 100],
-      ],
-    },
-
     activity: [
       {
-        icon: "report",
-        tint: "blue",
-        verb: "Your report is ready:",
-        subject: "Customer feedback report",
-        updated: 130,
-      },
-      {
-        icon: "doc",
-        tint: "sand",
-        verb: "Finished processing",
-        subject: "Customer interview notes.pdf",
-        updated: 48,
-      },
-      {
-        icon: "folder",
-        tint: "mint",
-        verb: "You created the project",
-        subject: "Website Redesign Research",
-        updated: 300,
-      },
-      {
-        icon: "chat",
+        actor: "Faridah",
+        action: "added a source",
+        detail: "Competitor patterns.csv",
         tint: "coral",
-        verb: "You renamed a conversation to",
-        subject: "Pricing page copy options",
-        updated: 1500,
+      },
+      {
+        actor: "Warwick",
+        action: "commented",
+        detail: "Navigation research synthesis",
+        tint: "mint",
+      },
+      {
+        actor: "You",
+        action: "updated a draft",
+        detail: "A clearer path through the work",
+        tint: "blue",
+      },
+    ],
+    usage: { percent: 68, responses: 124, documentsRead: 18, reportsMade: 4 },
+    notifications: [
+      {
+        id: "n1",
+        title: "Report ready",
+        text: "Navigation research synthesis is ready to review.",
+        unread: true,
+      },
+      {
+        id: "n2",
+        title: "Mentioned by Faridah",
+        text: "Can you add the decision principles to the project?",
+        unread: false,
+      },
+      {
+        id: "n3",
+        title: "Document processed",
+        text: "Competitor patterns.csv is ready for analysis.",
+        unread: false,
       },
     ],
   };

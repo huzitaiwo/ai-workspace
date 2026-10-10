@@ -1,11 +1,11 @@
 /* ==========================================================================
-   App shell — sidebar, drawer, topbar, bottom nav, menus, search palette,
-   toasts and global shortcuts. Pages only provide placeholders:
+   App shell — sidebar, drawer, topbar (+ notifications), bottom nav, menus,
+   search palette, toasts, shortcuts. Pages only provide placeholders:
      <div class="app" data-app data-page="home" data-title="Home">
        <div data-component="app-sidebar"></div>
        <div class="app__main">
          <div data-component="app-topbar"></div>
-         <main class="page" id="main">…</main>
+         <main class="page" id="main" tabindex="-1">…</main>
        </div>
        <div data-component="app-bottom-nav"></div>
      </div>
@@ -42,81 +42,103 @@
   try {
     stored = JSON.parse(localStorage.getItem("aiw-onboarding")) || {};
   } catch (e) {}
-  const workspaceName = stored.workspace || `${data.owner}’s workspace`;
+  const workspaceName = stored.workspace || data.workspace;
+  const initial = data.owner.charAt(0).toUpperCase();
 
-  /* ---------- Navigation model ---------- */
-  const primary = [
-    ["home", "dashboard.html", "Home", "home"],
-    ["conversations", "conversations.html", "Conversations", "chat"],
-    ["projects", "projects.html", "Projects", "folder"],
-    ["documents", "documents.html", "Documents", "doc"],
-    ["knowledge", "knowledge.html", "Knowledge", "book"],
-    ["writer", "writer.html", "AI Writer", "pen"],
-    ["reports", "reports.html", "Reports", "report"],
-    ["prompts", "prompts.html", "Prompt Library", "prompt"],
-    ["team", "team.html", "Team", "users"],
-  ];
-  const secondary = [
-    ["usage", "usage.html", "Usage", "chart"],
-    ["settings", "settings.html", "Settings", "settings"],
-  ];
-  const navItems = (items) =>
-    items
-      .map(
-        ([key, href, label, ic]) =>
-          `<li><a href="${href}"${key === page ? ' aria-current="page"' : ""}>${icon(ic)}<span>${label}</span></a></li>`,
-      )
-      .join("");
+  /* ---------- Notifications state ---------- */
+  const NOTIF_KEY = "aiw-notifs-read";
+  const notifs = data.notifications.map((n) => ({ ...n }));
+  try {
+    if (sessionStorage.getItem(NOTIF_KEY) === "1")
+      notifs.forEach((n) => {
+        n.unread = false;
+      });
+  } catch (e) {}
+  const unreadCount = () => notifs.filter((n) => n.unread).length;
+  const bellLabel = () =>
+    unreadCount() ? `Notifications, ${unreadCount()} unread` : "Notifications";
 
-  const unread = data.unreadNotifications;
-  const bellLabel = unread
-    ? `Notifications, ${unread} unread`
-    : "Notifications";
+  /* ---------- Navigation model: [key, href, label, icon, dot?] ---------- */
+  const nav = {
+    Core: [
+      ["home", "dashboard.html", "Home", "grid"],
+      ["chat", "chat.html", "AI Chat", "chat", true],
+      ["conversations", "conversations.html", "Conversations", "chats"],
+    ],
+    Workspace: [
+      ["projects", "projects.html", "Projects", "folder"],
+      ["documents", "documents.html", "Documents", "doc"],
+      ["knowledge", "knowledge.html", "Knowledge", "book"],
+      ["writer", "writer.html", "AI Writer", "pen"],
+      ["reports", "reports.html", "Reports", "sparkle"],
+      ["prompts", "prompts.html", "Prompt Library", "search"],
+    ],
+    Manage: [
+      ["team", "team.html", "Team", "users"],
+      ["usage", "usage.html", "Usage", "chart"],
+      ["billing", "billing.html", "Billing", "card"],
+      ["settings", "settings.html", "Settings", "gear"],
+    ],
+  };
+  const navGroup = ([label, items]) => `
+    <div class="nav-group">
+      <p class="nav-group__label" id="ng-${label.toLowerCase()}">${label}</p>
+      <ul aria-labelledby="ng-${label.toLowerCase()}">
+        ${items
+          .map(
+            ([key, href, text, ic, dot]) => `
+          <li><a href="${href}"${key === page ? ' aria-current="page"' : ""}>${icon(ic)}<span>${text}</span>${dot ? '<span class="nav-dot" role="img" aria-label="New activity"></span>' : ""}</a></li>`,
+          )
+          .join("")}
+      </ul>
+    </div>`;
+
+  const notifItem = (n) => `
+    <li><div class="notif${n.unread ? " is-unread" : ""}" data-notif="${n.id}">
+      <span class="tile tile--coral">${icon("bell")}</span>
+      <div><strong>${esc(n.title)}</strong><p>${esc(n.text)}</p></div>
+    </div></li>`;
 
   /* ---------- Templates ---------- */
   const templates = {
     "app-sidebar": `
       <aside class="sidebar" id="sidebar" aria-label="Workspace" data-sidebar inert>
-        <div class="sidebar__top">
-          <div class="menu-wrap sidebar__switcher">
-            <button class="switcher" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-workspace" data-menu-trigger>
-              <span class="switcher__avatar" aria-hidden="true">${esc(workspaceName.charAt(0).toUpperCase())}</span>
-              <span class="switcher__text"><strong>${esc(workspaceName)}</strong><small>${data.plan} plan</small></span>
-              ${icon("switch")}
-            </button>
-            <div class="menu" id="menu-workspace" role="menu" aria-label="Workspaces" inert>
-              <p class="menu__label" aria-hidden="true">Workspaces</p>
-              <button class="menu__item" type="button" role="menuitemradio" aria-checked="true">${esc(workspaceName)}${icon("check", "icon--end")}</button>
-              <div class="menu__sep" role="separator"></div>
-              <a class="menu__item" role="menuitem" href="../onboarding.html">${icon("plus")}Create workspace</a>
+        <div class="sidebar__head">
+          <div class="sidebar__brand">
+            <div class="menu-wrap">
+              <button class="switcher" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-workspace" data-menu-trigger>
+                <span class="logo__mark">${icon("logo")}</span><strong>${esc(workspaceName)}</strong>${icon("chevron")}
+              </button>
+              <div class="menu" id="menu-workspace" role="menu" aria-label="Workspaces" inert>
+                <p class="menu__label" aria-hidden="true">Workspaces</p>
+                <button class="menu__item" type="button" role="menuitemradio" aria-checked="true">${esc(workspaceName)}${icon("check", "icon--end")}</button>
+                <div class="menu__sep" role="separator"></div>
+                <a class="menu__item" role="menuitem" href="../onboarding.html">${icon("plus")}Create workspace</a>
+              </div>
             </div>
+            <button class="icon-btn sidebar__close" type="button" aria-label="Close navigation" data-drawer-close>${icon("close")}</button>
           </div>
-          <a class="icon-btn notif-btn" href="notifications.html" aria-label="${bellLabel}">${icon("bell")}${unread ? '<span class="notif-dot" aria-hidden="true"></span>' : ""}</a>
-          <button class="icon-btn sidebar__close" type="button" aria-label="Close navigation" data-drawer-close>${icon("close")}</button>
+          <a class="btn btn--primary btn--block btn--lg" href="chat.html">${icon("plus")}New conversation</a>
+          <button class="search-row" type="button" data-open-search>${icon("search")}<span>Search</span><kbd class="kbd">${MOD} K</kbd></button>
         </div>
 
-        <a class="btn btn--primary btn--block" href="chat.html">${icon("plus")}New conversation</a>
-
-        <button class="search-trigger" type="button" data-open-search>
-          ${icon("search")}<span>Search</span><kbd class="kbd">${MOD} K</kbd>
-        </button>
-
-        <nav class="side-nav" aria-label="Main"><ul>${navItems(primary)}</ul></nav>
+        <nav class="sidebar__nav" aria-label="Main">${Object.entries(nav).map(navGroup).join("")}</nav>
 
         <div class="sidebar__foot">
-          <nav class="side-nav" aria-label="Account"><ul>${navItems(secondary)}</ul></nav>
+          <a class="usage-mini" href="usage.html" style="--value:${data.usage.percent}%">
+            <span class="usage-mini__row"><span>Monthly usage</span><b>${data.usage.percent}%</b></span>
+            <span class="usage-mini__bar" aria-hidden="true"><i></i></span>
+            <span class="usage-mini__link">View usage ${icon("arrow", "icon--arrow")}</span>
+          </a>
           <div class="menu-wrap">
             <button class="profile-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-profile" data-menu-trigger>
-              <span class="avatar" aria-hidden="true">${esc(data.owner.charAt(0))}</span>
-              <span class="switcher__text"><strong>${esc(data.owner)}</strong><small>Owner</small></span>
-              ${icon("dots")}
+              <span class="avatar" aria-hidden="true">${esc(initial)}</span>
+              <span class="profile-btn__text"><strong>${esc(data.owner)}</strong><small>${esc(workspaceName)}</small></span>
+              ${icon("dots")}<span class="visually-hidden">Account menu</span>
             </button>
             <div class="menu menu--up" id="menu-profile" role="menu" aria-label="Account" inert>
               <a class="menu__item" role="menuitem" href="profile.html">${icon("user")}Profile</a>
-              <a class="menu__item" role="menuitem" href="settings.html">${icon("settings")}Settings</a>
-              <button class="menu__item theme-toggle" type="button" role="menuitem" data-theme-menu>
-                ${icon("moon", "icon--moon")}${icon("sun", "icon--sun")}<span data-theme-label>Switch to dark theme</span>
-              </button>
+              <a class="menu__item" role="menuitem" href="settings.html">${icon("gear")}Settings</a>
               <div class="menu__sep" role="separator"></div>
               <a class="menu__item" role="menuitem" href="../login.html">${icon("logout")}Sign out</a>
             </div>
@@ -127,23 +149,36 @@
 
     "app-topbar": `
       <header class="topbar">
-        <button class="icon-btn" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar" data-drawer-open>${icon("menu")}</button>
-        <a class="topbar__title" href="dashboard.html"><span class="logo__mark">${icon("logo")}</span><span>${esc(title)}</span></a>
+        <div class="topbar__start">
+          <button class="icon-btn topbar__menu" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar" data-drawer-open>${icon("menu")}</button>
+          <nav class="crumbs" aria-label="Breadcrumb"><ol><li>${esc(workspaceName)}</li><li aria-current="page">${esc(title)}</li></ol></nav>
+        </div>
+        <p class="topbar__title">${esc(title)}</p>
         <div class="topbar__actions">
-          <button class="icon-btn" type="button" aria-label="Search" data-open-search>${icon("search")}</button>
-          <a class="icon-btn notif-btn" href="notifications.html" aria-label="${bellLabel}">${icon("bell")}${unread ? '<span class="notif-dot" aria-hidden="true"></span>' : ""}</a>
-          <a class="icon-btn" href="chat.html" aria-label="New conversation">${icon("plus")}</a>
+          <button class="search-pill" type="button" data-open-search>${icon("search")}<span>Search workspace</span><kbd class="kbd">${MOD} K</kbd></button>
+          <button class="icon-btn theme-toggle" type="button" data-app-theme aria-label="Switch to dark theme">${icon("moon", "icon--moon")}${icon("sun", "icon--sun")}</button>
+          <div class="menu-wrap">
+            <button class="icon-btn notif-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="notif-panel" aria-label="${bellLabel()}" data-notif-trigger>
+              ${icon("bell")}${unreadCount() ? '<span class="notif-dot" aria-hidden="true"></span>' : ""}
+            </button>
+            <section class="popover" id="notif-panel" role="dialog" aria-label="Notifications" inert>
+              <div class="popover__head"><h2>Notifications</h2><button class="icon-btn" type="button" aria-label="Close notifications" data-notif-close>${icon("close")}</button></div>
+              <ul class="notif-list">${notifs.map(notifItem).join("")}</ul>
+              <div class="popover__foot"><button class="mark-read" type="button" data-mark-read>Mark all as read ${icon("check")}</button></div>
+              <p class="visually-hidden" role="status" aria-live="polite" data-notif-status></p>
+            </section>
+          </div>
         </div>
       </header>`,
 
     "app-bottom-nav": `
       <nav class="bottom-nav" aria-label="Quick navigation">
         <ul>
-          <li><a href="dashboard.html"${page === "home" ? ' aria-current="page"' : ""}>${icon("home")}Home</a></li>
-          <li><a href="conversations.html"${page === "conversations" ? ' aria-current="page"' : ""}>${icon("chat")}Chats</a></li>
-          <li><a href="projects.html"${page === "projects" ? ' aria-current="page"' : ""}>${icon("folder")}Projects</a></li>
-          <li><a href="documents.html"${page === "documents" ? ' aria-current="page"' : ""}>${icon("doc")}Docs</a></li>
-          <li><button type="button" aria-expanded="false" aria-controls="sidebar" data-drawer-open>${icon("menu")}More</button></li>
+          <li><a href="dashboard.html"${page === "home" ? ' aria-current="page"' : ""}><span class="icon-wrap">${icon("grid")}</span>Home</a></li>
+          <li><a href="chat.html"${page === "chat" ? ' aria-current="page"' : ""}><span class="icon-wrap">${icon("chat")}</span>Chat</a></li>
+          <li><a href="projects.html"${page === "projects" ? ' aria-current="page"' : ""}><span class="icon-wrap">${icon("folder")}</span>Projects</a></li>
+          <li><a href="documents.html"${page === "documents" ? ' aria-current="page"' : ""}><span class="icon-wrap">${icon("doc")}</span>Documents</a></li>
+          <li><a href="writer.html"${page === "writer" ? ' aria-current="page"' : ""}><span class="icon-wrap">${icon("pen")}</span>AI Writer</a></li>
         </ul>
       </nav>`,
   };
@@ -156,10 +191,10 @@
       tpl.innerHTML = html.trim();
       slot.replaceWith(tpl.content);
     });
-    document.querySelectorAll("[data-open-search] .kbd").forEach(() => {});
     initDrawer();
     initMenus();
-    initTheme();
+    initThemeButton();
+    initNotifications();
     const toast = initToasts();
     const openSearch = initPalette();
     initShortcuts(openSearch);
@@ -182,7 +217,9 @@
       scrim.classList.add("is-open");
       document.body.classList.add("is-locked");
       openers.forEach((b) => b.setAttribute("aria-expanded", "true"));
-      requestAnimationFrame(() => sidebar.querySelector(".switcher").focus());
+      requestAnimationFrame(() =>
+        sidebar.querySelector("[data-drawer-close]").focus(),
+      );
     }
     function close(refocus = true) {
       if (!isOpen()) return;
@@ -228,7 +265,7 @@
       if (
         e.key === "Escape" &&
         isOpen() &&
-        !document.querySelector(".menu.is-open") &&
+        !document.querySelector(".menu.is-open, .popover.is-open") &&
         !document.querySelector("dialog[open]")
       )
         close();
@@ -237,7 +274,7 @@
     sync();
   }
 
-  /* ---------- Menus ---------- */
+  /* ---------- Menus (workspace, account, any page-level menu) ---------- */
   function initMenus() {
     const all = [];
     document.querySelectorAll("[data-menu-trigger]").forEach((trigger) => {
@@ -320,20 +357,81 @@
     });
   }
 
-  /* ---------- Theme item in profile menu ---------- */
-  function initTheme() {
-    const btn = document.querySelector("[data-theme-menu]");
+  /* ---------- Theme button (top bar) ---------- */
+  function initThemeButton() {
+    const btn = document.querySelector("[data-app-theme]");
     if (!btn) return;
-    const label = btn.querySelector("[data-theme-label]");
-    const sync = () => {
-      label.textContent =
+    const sync = () =>
+      btn.setAttribute(
+        "aria-label",
         window.aiwTheme.get() === "dark"
           ? "Switch to light theme"
-          : "Switch to dark theme";
-    };
+          : "Switch to dark theme",
+      );
     btn.addEventListener("click", () => window.aiwTheme.toggle());
     document.addEventListener("themechange", sync);
     sync();
+  }
+
+  /* ---------- Notifications popover ---------- */
+  function initNotifications() {
+    const trigger = document.querySelector("[data-notif-trigger]");
+    const panel = document.getElementById("notif-panel");
+    if (!trigger || !panel) return;
+    const closeBtn = panel.querySelector("[data-notif-close]");
+    const markBtn = panel.querySelector("[data-mark-read]");
+    const status = panel.querySelector("[data-notif-status]");
+
+    const isOpen = () => panel.classList.contains("is-open");
+    function open() {
+      trigger.setAttribute("aria-expanded", "true");
+      panel.classList.add("is-open");
+      panel.removeAttribute("inert");
+      requestAnimationFrame(() => closeBtn.focus());
+    }
+    function close(refocus = true) {
+      trigger.setAttribute("aria-expanded", "false");
+      panel.classList.remove("is-open");
+      panel.setAttribute("inert", "");
+      if (refocus) trigger.focus();
+    }
+    function renderState() {
+      const none = unreadCount() === 0;
+      markBtn.disabled = none;
+      markBtn.firstChild.textContent = none
+        ? "All caught up "
+        : "Mark all as read ";
+      trigger.setAttribute("aria-label", bellLabel());
+      const dot = trigger.querySelector(".notif-dot");
+      if (none && dot) dot.remove();
+      panel.querySelectorAll("[data-notif]").forEach((el) => {
+        const n = notifs.find((x) => x.id === el.dataset.notif);
+        el.classList.toggle("is-unread", n.unread);
+      });
+    }
+
+    trigger.addEventListener("click", () => (isOpen() ? close() : open()));
+    closeBtn.addEventListener("click", () => close());
+    markBtn.addEventListener("click", () => {
+      notifs.forEach((n) => {
+        n.unread = false;
+      });
+      try {
+        sessionStorage.setItem(NOTIF_KEY, "1");
+      } catch (e) {}
+      renderState();
+      status.textContent = "All notifications marked as read.";
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isOpen()) {
+        e.stopPropagation();
+        close();
+      }
+    });
+    document.addEventListener("pointerdown", (e) => {
+      if (isOpen() && !panel.parentElement.contains(e.target)) close(false);
+    });
+    renderState();
   }
 
   /* ---------- Toasts ---------- */
@@ -362,15 +460,14 @@
     document.body.insertAdjacentHTML(
       "beforeend",
       `
-      <dialog class="palette" id="palette" aria-label="Search and quick actions">
+      <dialog class="palette" id="palette" aria-label="Search workspace">
         <div class="palette__search">
           ${icon("search")}
-          <input class="palette__input" id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Search conversations, projects, documents, reports, and prompts" placeholder="Search or jump to…" autocomplete="off" spellcheck="false">
-          <kbd class="kbd">Esc</kbd>
+          <input class="palette__input" id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Search workspace" placeholder="Search workspace…" autocomplete="off" spellcheck="false">
+          <kbd class="kbd">ESC</kbd>
         </div>
         <div class="palette__list" id="palette-list" role="listbox" aria-label="Results"></div>
         <p class="visually-hidden" role="status" aria-live="polite" id="palette-status"></p>
-        <div class="palette__foot"><span><kbd class="kbd">↑</kbd><kbd class="kbd">↓</kbd> Navigate</span><span><kbd class="kbd">↵</kbd> Open</span></div>
       </dialog>`,
     );
 
@@ -379,88 +476,51 @@
     const list = document.getElementById("palette-list");
     const status = document.getElementById("palette-status");
 
-    const T = data.types;
-    const from = (type, item, meta) => ({
-      title: item.title,
-      meta,
-      href: T[type].href(item.id),
-      icon: T[type].icon,
-      tint: T[type].tint,
-    });
-
-    const actions = [
-      {
-        title: "New conversation",
-        meta: "Action",
-        href: "chat.html",
-        icon: "plus",
-        tint: "coral",
-      },
-      {
-        title: "Analyze document",
-        meta: "Action",
-        href: "documents.html?action=analyze",
-        icon: "doc",
-        tint: "mint",
-      },
-      {
-        title: "Write",
-        meta: "Action",
-        href: "writer.html",
-        icon: "pen",
-        tint: "sand",
-      },
-      {
-        title: "Generate report",
-        meta: "Action",
-        href: "reports.html?new=1",
-        icon: "report",
-        tint: "blue",
-      },
-      {
-        title: "Search knowledge",
-        meta: "Action",
-        href: "knowledge.html?focus=search",
-        icon: "book",
-        tint: "mauve",
-      },
+    const pagesAll = Object.values(nav)
+      .flat()
+      .map(([key, href, label]) => ({ kind: "page", key, title: label, href }));
+    const goKeys = [
+      "home",
+      "chat",
+      "projects",
+      "documents",
+      "knowledge",
+      "writer",
+      "reports",
+      "prompts",
+      "team",
+      "usage",
+      "settings",
     ];
-    const pages = [...primary, ...secondary].map(([, href, label, ic]) => ({
-      title: label,
-      meta: "Page",
-      href,
-      icon: ic,
-      tint: "mint",
+    const goTo = goKeys.map((k) => pagesAll.find((p) => p.key === k));
+    const recent = data.sessions.map((s) => ({
+      kind: "recent",
+      title: s.title,
+      href: `chat.html?id=${s.id}`,
     }));
     const content = {
-      Conversations: data.conversations.map((i) => ({
-        ...from("conversation", i, `Conversation · ${i.project}`),
-        updated: i.updated,
+      Conversations: data.sessions.map((s) => ({
+        kind: "content",
+        icon: "chat",
+        title: s.title,
+        meta: "Conversation",
+        href: `chat.html?id=${s.id}`,
       })),
-      Projects: data.projects.map((i) => ({
-        ...from("project", i, `Project · ${data.ago(i.updated)}`),
-        updated: i.updated,
+      Projects: data.projects.map((p) => ({
+        kind: "content",
+        icon: "folder",
+        title: p.title,
+        meta: "Project",
+        href: `projects.html?id=${p.id}`,
       })),
-      Documents: data.documents.map((i) => ({
-        ...from("document", i, `Document · ${i.project}`),
-        updated: i.updated,
+      Documents: data.documents.map((d) => ({
+        kind: "content",
+        icon: "doc",
+        title: d.name,
+        meta: "Document",
+        href: `documents.html?id=${d.id}`,
       })),
-      Reports: data.reports.map((i) => ({
-        ...from("report", i, `Report · ${i.project}`),
-        updated: i.updated,
-      })),
-      Prompts: data.prompts.map((i) =>
-        from("prompt", i, `Prompt · ${i.category}`),
-      ),
     };
-    const recent = [
-      ...content.Conversations,
-      ...content.Projects,
-      ...content.Documents,
-      ...content.Reports,
-    ]
-      .sort((a, b) => a.updated - b.updated)
-      .slice(0, 4);
 
     let flat = [];
     let active = 0;
@@ -469,27 +529,27 @@
       const terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
       if (!terms.length)
         return [
-          { label: "Quick actions", items: actions },
+          { label: "Go to", items: goTo },
           { label: "Recent", items: recent },
         ];
-      const hit = (e) => {
-        const hay = `${e.title} ${e.meta}`.toLowerCase();
-        return terms.every((t) => hay.includes(t));
-      };
-      const rank = (e) => (e.title.toLowerCase().startsWith(terms[0]) ? 0 : 1);
+      const hit = (e) =>
+        terms.every((t) =>
+          `${e.title} ${e.meta || ""}`.toLowerCase().includes(t),
+        );
       const out = [];
       const add = (label, items) => {
-        const r = items
-          .filter(hit)
-          .sort((a, b) => rank(a) - rank(b))
-          .slice(0, 5);
+        const r = items.filter(hit).slice(0, 6);
         if (r.length) out.push({ label, items: r });
       };
-      add("Quick actions", actions);
-      add("Pages", pages);
+      add("Go to", pagesAll);
       Object.entries(content).forEach(([label, items]) => add(label, items));
       return out;
     }
+
+    const lead = (e) =>
+      e.kind === "page"
+        ? '<span class="palette__glyph" aria-hidden="true">⌘</span>'
+        : `<span class="palette__glyph" aria-hidden="true">${icon(e.kind === "recent" ? "clock" : e.icon)}</span>`;
 
     function render() {
       const q = input.value;
@@ -497,7 +557,7 @@
       flat = groups.flatMap((g) => g.items);
       active = 0;
       if (!flat.length) {
-        list.innerHTML = `<p class="palette__empty">No results for “${esc(q.trim())}”. Try a project, document, or report name.</p>`;
+        list.innerHTML = `<p class="palette__empty">No results for “${esc(q.trim())}”. Try a project, document, or page name.</p>`;
         status.textContent = "No results";
         input.removeAttribute("aria-activedescendant");
         return;
@@ -513,9 +573,8 @@
               const i = n++;
               return `
             <div class="palette__item" role="option" id="pal-${i}" aria-selected="${i === 0}" data-index="${i}">
-              <span class="tile tile--${e.tint}">${icon(e.icon)}</span>
-              <span class="palette__title">${esc(e.title)}</span>
-              <span class="palette__meta">${esc(e.meta)}</span>
+              ${lead(e)}<span class="palette__title">${esc(e.title)}</span>
+              ${e.meta ? `<span class="palette__meta">${esc(e.meta)}</span>` : ""}${icon("chevron-right", "palette__go")}
             </div>`;
             })
             .join("")}
@@ -541,7 +600,6 @@
         .getElementById(`pal-${active}`)
         .scrollIntoView({ block: "nearest" });
     }
-
     const go = (entry) => {
       if (entry) location.href = entry.href;
     };

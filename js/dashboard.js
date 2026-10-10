@@ -1,222 +1,149 @@
 /* ==========================================================================
-   Dashboard — greeting, ask box, tabs with loading/empty states,
-   usage, activity.  Add ?state=empty to the URL to preview the empty state.
+   Dashboard — greeting, lists (skeleton → content → empty), usage donut.
+   Add ?state=empty to the URL to preview the empty states.
    ========================================================================== */
 (() => {
   const init = () => {
-    const { data, esc, icon } = window.aiwApp;
+    const { data, esc, icon, toast } = window.aiwApp;
     const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const emptyDemo =
       new URLSearchParams(location.search).get("state") === "empty";
+    const $ = (sel) => document.querySelector(sel);
 
-    /* ---------- Greeting ---------- */
-    const hour = new Date().getHours();
+    /* ---------- Header ---------- */
+    const now = new Date();
+    const hour = now.getHours();
     const part = hour < 12 ? "morning" : hour < 18 ? "afternoon" : "evening";
-    document.querySelector("[data-greeting]").textContent =
-      `Good ${part}, ${data.owner}.`;
-
-    /* ---------- Ask box ---------- */
-    const form = document.querySelector("[data-ask]");
-    const box = form.elements.prompt;
-    const error = form.querySelector("[data-ask-error]");
-    const resize = () => {
-      box.style.height = "auto";
-      box.style.height = Math.min(box.scrollHeight, 192) + "px";
-    };
-    box.addEventListener("input", () => {
-      resize();
-      error.hidden = true;
+    $("[data-date]").textContent = now.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
     });
-    box.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
-        e.preventDefault();
-        form.requestSubmit();
-      }
-    });
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const text = box.value.trim();
-      if (!text) {
-        error.hidden = false;
-        box.focus();
-        return;
-      }
-      location.href = `chat.html?model=${encodeURIComponent(form.elements.model.value)}&prompt=${encodeURIComponent(text)}`;
-    });
+    $("[data-greeting]").textContent = `Good ${part}, ${data.owner}.`;
 
-    /* ---------- Continue working ---------- */
-    const list = document.querySelector("[data-work-list]");
-    const status = document.querySelector("[data-work-status]");
-    const tabs = [...document.querySelectorAll("[data-tab]")];
-    const T = data.types;
-
-    const source = emptyDemo
-      ? { conversations: [], projects: [], documents: [], reports: [] }
-      : data;
-    const items = [
-      ...source.conversations.map((i) => ({
-        ...i,
-        type: "conversation",
-        meta: `${i.project} · ${data.ago(i.updated)}`,
-      })),
-      ...source.projects.map((i) => ({
-        ...i,
-        type: "project",
-        meta: `${i.sources} sources · Updated ${data.ago(i.updated)}`,
-      })),
-      ...source.documents.map((i) => ({
-        ...i,
-        type: "document",
-        meta: `${i.ext.toUpperCase()} · ${i.size} · ${data.ago(i.updated)}`,
-        badge: i.status === "processing" ? ["warn", "Processing"] : null,
-      })),
-      ...source.reports.map((i) => ({
-        ...i,
-        type: "report",
-        meta: `${i.project} · ${data.ago(i.updated)}`,
-        badge: i.status === "draft" ? ["", "Draft"] : null,
-      })),
-    ].sort((a, b) => a.updated - b.updated);
-
-    const emptyCopy = {
-      all: [
-        "Nothing to continue yet",
-        "Start a conversation, upload a document, or create a project. Your recent work appears here so you can pick it up in one click.",
-        "New conversation",
-        "chat.html",
-        "plus",
-      ],
-      conversation: [
-        "No conversations yet",
-        "Conversations keep questions and answers together with their sources, so you can return to them later.",
-        "New conversation",
-        "chat.html",
-        "chat",
-      ],
-      project: [
-        "No projects yet",
-        "Projects gather conversations, files, and instructions for one piece of work, giving every answer the right context.",
-        "Create a project",
-        "projects.html?new=1",
-        "folder",
-      ],
-      document: [
-        "No documents yet",
-        "Upload a PDF, Word file, or spreadsheet to summarize it, ask questions, and find risks with sources.",
-        "Upload a document",
-        "documents.html?action=upload",
-        "upload",
-      ],
-      report: [
-        "No reports yet",
-        "Reports turn selected sources into a structured summary with findings and recommendations.",
-        "Generate a report",
-        "reports.html?new=1",
-        "report",
-      ],
+    /* ---------- Templates ---------- */
+    const skRow = () => `<li class="row" aria-hidden="true">
+      <span class="skeleton" style="width:2.25rem;height:2.25rem;border-radius:.65rem"></span>
+      <span class="row__body"><span class="skeleton" style="width:55%;height:.75rem"></span><span class="skeleton" style="width:35%;height:.6rem;margin-top:.5rem"></span></span></li>`;
+    const skCard = () =>
+      `<div class="project-card" aria-hidden="true"><span class="skeleton" style="width:60%;height:2.1rem"></span><span class="skeleton" style="height:.4rem"></span></div>`;
+    const skeletons = {
+      sessions: `<ul class="row-list">${skRow().repeat(3)}</ul>`,
+      documents: `<ul class="row-list">${skRow().repeat(3)}</ul>`,
+      projects: `<div class="project-grid">${skCard().repeat(3)}</div>`,
     };
 
-    const card = (i, showType) => {
-      const t = T[i.type];
-      const badge = i.badge
-        ? `<span class="badge ${i.badge[0] ? "badge--" + i.badge[0] : ""}">${i.badge[1]}</span>`
-        : showType
-          ? `<span class="badge">${t.label}</span>`
-          : "";
-      return `<li><a class="work-card" href="${t.href(i.id)}">
-        <span class="tile tile--${t.tint}">${icon(t.icon)}</span>
-        <span class="work-card__body"><h3>${esc(i.title)}</h3><p>${esc(i.meta)}</p></span>${badge}
-      </a></li>`;
+    const empty = (ic, tint, heading, text, label, href) => `
+      <div class="empty"><span class="tile tile--${tint}">${icon(ic)}</span><h3>${heading}</h3><p>${text}</p>
+      <a class="btn btn--primary btn--sm" href="${href}">${label} ${icon("arrow", "icon--arrow")}</a></div>`;
+
+    const sessionRow = (s) => `<li><a class="row" href="chat.html?id=${s.id}">
+      <span class="tile tile--${s.tint}">${icon("chat")}</span>
+      <span class="row__body"><strong>${esc(s.title)}</strong><span>${esc(s.stage)} · ${data.ago(s.updated)}</span></span>
+      <span class="tag">${esc(s.tag)}</span>${icon("chevron-right", "row__go")}</a></li>`;
+
+    const docRow = (d) => `<li><a class="row" href="documents.html?id=${d.id}">
+      <span class="file-chip" aria-hidden="true">${esc(d.ext)}</span>
+      <span class="row__body"><strong>${esc(d.name)}</strong><span${d.status === "processing" ? ' class="is-processing"' : ""}>${d.status === "processing" ? "Processing source" : "Ready for analysis"}</span></span>
+      ${icon("chevron-right", "row__go")}</a></li>`;
+
+    const projectCard = (
+      p,
+    ) => `<a class="project-card" href="projects.html?id=${p.id}">
+      <span class="project-card__top"><span class="tile tile--${p.tint}">${icon("folder")}</span><span><strong>${esc(p.title)}</strong><small>${esc(p.meta)}</small></span></span>
+      <span class="project-card__progress"><span class="meter" role="img" aria-label="${p.progress}% complete" style="--value:${p.progress}%"><span></span></span><span aria-hidden="true">${p.progress}%</span></span></a>`;
+
+    const content = {
+      sessions: () =>
+        emptyDemo || !data.sessions.length
+          ? empty(
+              "chat",
+              "coral",
+              "Nothing to continue yet",
+              "Start a conversation and it will appear here, ready to pick up in one click.",
+              "New conversation",
+              "chat.html",
+            )
+          : `<ul class="row-list">${data.sessions.map(sessionRow).join("")}</ul>`,
+      documents: () =>
+        emptyDemo || !data.documents.length
+          ? empty(
+              "doc",
+              "sand",
+              "No documents yet",
+              "Upload a PDF, Word file, or spreadsheet to summarize it and ask questions with sources.",
+              "Upload a document",
+              "documents.html?action=upload",
+            )
+          : `<ul class="row-list">${data.documents.map(docRow).join("")}</ul>`,
+      projects: () =>
+        emptyDemo || !data.projects.length
+          ? empty(
+              "folder",
+              "mint",
+              "No projects yet",
+              "Projects gather conversations, files, and instructions so every answer has the right context.",
+              "Create a project",
+              "projects.html?new=1",
+            )
+          : `<div class="project-grid">${data.projects.map(projectCard).join("")}</div>`,
     };
-    const skeleton =
-      () => `<li class="work-card work-card--skeleton" aria-hidden="true">
-        <span class="skeleton" style="width:2.5rem;height:2.5rem;border-radius:.7rem"></span>
-        <span class="work-card__body"><span class="skeleton" style="display:block;width:70%;height:.8rem"></span><span class="skeleton" style="display:block;width:45%;height:.65rem;margin-top:.55rem"></span></span>
-      </li>`;
 
-    function render(filter) {
-      const shown = (
-        filter === "all" ? items : items.filter((i) => i.type === filter)
-      ).slice(0, 8);
-      list.removeAttribute("aria-busy");
-      if (!shown.length) {
-        const [h, p, label, href, ic] = emptyCopy[filter];
-        list.className = "";
-        list.innerHTML = `<li class="empty"><span class="tile tile--mint">${icon(ic)}</span><h3>${h}</h3><p>${p}</p><a class="btn btn--primary btn--sm" href="${href}">${label} ${icon("arrow", "icon--arrow")}</a></li>`;
-        status.textContent = h;
-        return;
-      }
-      list.className = "work-grid";
-      list.innerHTML = shown.map((i) => card(i, filter === "all")).join("");
-      status.textContent = `${shown.length} item${shown.length === 1 ? "" : "s"}`;
-    }
-
-    function select(tab, focus = false) {
-      tabs.forEach((t) => {
-        const on = t === tab;
-        t.setAttribute("aria-selected", on);
-        t.tabIndex = on ? 0 : -1;
-      });
-      if (focus) tab.focus();
-      list.setAttribute("aria-labelledby", tab.id);
-      render(tab.dataset.tab);
-    }
-    tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => select(tab));
-      tab.addEventListener("keydown", (e) => {
-        const move = {
-          ArrowRight: i + 1,
-          ArrowLeft: i - 1,
-          Home: 0,
-          End: tabs.length - 1,
-        }[e.key];
-        if (move === undefined) return;
-        e.preventDefault();
-        select(tabs[(move + tabs.length) % tabs.length], true);
-      });
+    const slots = document.querySelectorAll("[data-list]");
+    slots.forEach((slot) => {
+      slot.setAttribute("aria-busy", "true");
+      slot.innerHTML = skeletons[slot.dataset.list];
     });
-
-    /* initial load: skeleton → content */
-    list.className = "work-grid";
-    list.setAttribute("aria-busy", "true");
-    list.innerHTML = Array.from({ length: 6 }, skeleton).join("");
-    tabs[0].tabIndex = 0;
-    setTimeout(() => select(tabs[0]), reduceMotion ? 0 : 550);
-
-    /* ---------- Usage ---------- */
-    const u = data.usage;
-    const used = u.creditsTotal - u.creditsLeft;
-    document.querySelector("[data-credits-left]").textContent =
-      (u.creditsLeft / 1000).toFixed(1).replace(".0", "") + "k";
-    document.querySelector("[data-credits-caption]").textContent =
-      `${used.toLocaleString()} of ${u.creditsTotal.toLocaleString()} credits used this cycle`;
-    document
-      .querySelector("[data-meter]")
-      .style.setProperty("--value", `${(used / u.creditsTotal) * 100}%`);
-    document.querySelector("[data-docs]").textContent = u.documents;
-    document.querySelector("[data-reports]").textContent = u.reports;
-    document.querySelector("[data-bars]").innerHTML = u.days
-      .map(([, v], n) => `<span style="--h:${v}%;--n:${n}"></span>`)
-      .join("");
-    document.querySelector("[data-days]").innerHTML = u.days
-      .map(([d]) => `<span>${d}</span>`)
-      .join("");
+    setTimeout(
+      () => {
+        slots.forEach((slot) => {
+          slot.innerHTML = content[slot.dataset.list]();
+          slot.removeAttribute("aria-busy");
+        });
+      },
+      reduceMotion ? 0 : 450,
+    );
 
     /* ---------- Activity ---------- */
-    const activity = document.querySelector("[data-activity]");
-    if (emptyDemo) {
-      activity.outerHTML =
-        '<p class="activity__empty">No activity yet. When you create projects, upload documents, or generate reports, a timeline of what happened appears here.</p>';
+    const activity = $("[data-activity]");
+    if (emptyDemo || !data.activity.length) {
+      activity.innerHTML =
+        "<li><span>No activity yet. When teammates add sources, comment, or update drafts, it appears here.</span></li>";
     } else {
       activity.innerHTML = data.activity
         .map(
           (a) => `<li>
-        <span class="tile tile--${a.tint}">${icon(a.icon)}</span>
-        <div><p>${esc(a.verb)} <strong>${esc(a.subject)}</strong></p><time>${data.ago(a.updated)}</time></div>
-      </li>`,
+        <span class="tile tile--${a.tint}">${icon("clock")}</span>
+        <div><strong>${esc(a.actor)} ${esc(a.action)}</strong><span>${esc(a.detail)}</span></div></li>`,
         )
         .join("");
     }
+
+    /* ---------- Usage donut ---------- */
+    const u = data.usage;
+    const circ = 314.16;
+    const ring = $("[data-ring]");
+    const paint = () => {
+      ring.style.setProperty("--offset", String(circ * (1 - u.percent / 100)));
+      $("[data-percent]").textContent = u.percent;
+      $("[data-responses]").textContent = u.responses;
+      $("[data-documents-read]").textContent = u.documentsRead;
+      $("[data-reports-made]").textContent = u.reportsMade;
+      $("[data-donut]").setAttribute(
+        "aria-label",
+        `${u.percent} percent of this month's usage used`,
+      );
+    };
+    paint();
+
+    const refresh = $("[data-usage-refresh]");
+    if (refresh)
+      refresh.addEventListener("click", () => {
+        ring.style.animation = "none";
+        void ring.getBoundingClientRect();
+        ring.style.animation = "";
+        toast("Usage refreshed.");
+      });
   };
 
   if (window.aiwApp) init();

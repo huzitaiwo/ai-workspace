@@ -103,6 +103,12 @@
   width: 100%;
 }
 
+.btn--lg {
+  min-height: 3rem;
+  padding: 0 1.4rem;
+  font-size: 0.875rem;
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
