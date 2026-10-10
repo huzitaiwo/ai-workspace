@@ -49,6 +49,29 @@ window.aiwData = (() => {
         tint: "blue",
       },
     ],
+    conversations: [
+      {
+        id: "customer-insight-themes",
+        title: "Customer insight themes",
+        project: "insight-program",
+        tag: "Active",
+        tint: "coral",
+      },
+      {
+        id: "northstar-positioning-brief",
+        title: "Northstar positioning brief",
+        project: "northstar-launch",
+        tag: "Shared",
+        tint: "mint",
+      },
+      {
+        id: "product-direction-notes",
+        title: "Product direction notes",
+        project: "website-redesign",
+        tag: "Active",
+        tint: "blue",
+      },
+    ],
     documents: [
       {
         id: "interview-synthesis",

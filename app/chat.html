@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>AI Chat — AI Workspace</title>
+    <meta
+      name="description"
+      content="Ask questions across your project's sources and get answers with a clear trail back to where they came from."
+    />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171a17"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/chat.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app" data-app data-page="chat" data-title="AI Chat">
+      <div data-component="app-sidebar"></div>
+
+      <div class="app__main">
+        <div data-component="app-topbar"></div>
+
+        <main class="page" id="main" tabindex="-1">
+          <noscript
+            ><p class="empty">
+              AI Workspace needs JavaScript to load your workspace.
+            </p></noscript
+          >
+
+          <!-- ===== Header ===== -->
+          <header class="chat-head" data-rise style="--i: 0">
+            <div>
+              <p class="eyebrow" data-eyebrow>Project · Website Redesign</p>
+              <h1 data-title>Website Redesign Research</h1>
+            </div>
+            <div class="chat-head__tools">
+              <div class="menu-wrap">
+                <button
+                  class="pill-btn"
+                  type="button"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="menu-model"
+                  data-menu-trigger
+                >
+                  <span class="dot" aria-hidden="true"></span
+                  ><span data-model-label>Live workspace AI</span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-chevron"></use>
+                  </svg>
+                </button>
+                <div
+                  class="menu menu--end menu--wide"
+                  id="menu-model"
+                  role="menu"
+                  aria-label="AI model"
+                  inert
+                ></div>
+              </div>
+              <button
+                class="icon-btn"
+                type="button"
+                aria-expanded="true"
+                aria-controls="context-panel"
+                aria-label="Hide context panel"
+                data-context-toggle
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-panel"></use>
+                </svg>
+              </button>
+            </div>
+          </header>
+
+          <!-- ===== Conversation panel ===== -->
+          <div class="chat-panel" data-panel data-rise style="--i: 1">
+            <section class="chat" aria-label="Conversation">
+              <div
+                class="chat__scroll"
+                data-scroll
+                tabindex="0"
+                aria-label="Conversation messages"
+              >
+                <div
+                  class="chat__thread"
+                  role="log"
+                  aria-live="off"
+                  data-thread
+                ></div>
+              </div>
+
+              <div class="chat__dock">
+                <div class="suggest-row">
+                  <span class="eyebrow" id="try-label"
+                    >Try a focused question</span
+                  >
+                  <button
+                    class="chip"
+                    type="button"
+                    data-question="Where do the sources disagree?"
+                  >
+                    Where do the sources disagree?
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-arrow"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="chip"
+                    type="button"
+                    data-question="What should we test first?"
+                  >
+                    What should we test first?
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-arrow"></use>
+                    </svg>
+                  </button>
+                  <button
+                    class="chip"
+                    type="button"
+                    data-question="Turn this into a design principle"
+                  >
+                    Turn this into a design principle
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-arrow"></use>
+                    </svg>
+                  </button>
+                </div>
+
+                <form class="composer" data-form novalidate>
+                  <div class="composer__tools">
+                    <button
+                      class="icon-btn"
+                      type="button"
+                      aria-label="Attach files"
+                      data-attach-btn
+                    >
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#i-paperclip"></use>
+                      </svg>
+                    </button>
+                    <input
+                      type="file"
+                      hidden
+                      multiple
+                      accept=".pdf,.docx,.txt,.csv,.xlsx,image/png,image/jpeg,image/webp"
+                      data-file
+                    />
+                    <div class="menu-wrap">
+                      <button
+                        class="chip-select"
+                        type="button"
+                        aria-haspopup="menu"
+                        aria-expanded="false"
+                        aria-controls="menu-project"
+                        aria-label="Project context"
+                        data-menu-trigger
+                      >
+                        <span class="dot" aria-hidden="true"></span
+                        ><span data-project-label>Website Redesign</span
+                        ><svg class="icon" aria-hidden="true">
+                          <use href="#i-chevron"></use>
+                        </svg>
+                      </button>
+                      <div
+                        class="menu menu--up menu--wide"
+                        id="menu-project"
+                        role="menu"
+                        aria-label="Project context"
+                        inert
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="attachments"
+                    data-attachments
+                    aria-label="Attached files"
+                  ></div>
+                  <label class="visually-hidden" for="chat-input"
+                    >Message AI Workspace</label
+                  >
+                  <textarea
+                    id="chat-input"
+                    rows="2"
+                    data-composer
+                    placeholder="Ask anything about this project…"
+                    aria-describedby="composer-hint"
+                  ></textarea>
+                  <div class="composer__foot">
+                    <p class="composer__hint" id="composer-hint">
+                      Enter to send · Shift + Enter for a new line
+                    </p>
+                    <button
+                      class="send-btn"
+                      type="submit"
+                      data-send
+                      disabled
+                      aria-label="Send message"
+                    >
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#i-send"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+                <p
+                  class="visually-hidden"
+                  role="status"
+                  aria-live="polite"
+                  data-chat-status
+                ></p>
+              </div>
+            </section>
+
+            <!-- ===== Context rail ===== -->
+            <aside class="context" id="context-panel" aria-label="In context">
+              <div class="context__head">
+                <div>
+                  <span class="eyebrow">In context</span>
+                  <h2 data-ctx-title>Website Redesign</h2>
+                </div>
+                <button
+                  class="icon-btn"
+                  type="button"
+                  aria-label="Close context panel"
+                  data-ctx-close
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-close"></use>
+                  </svg>
+                </button>
+              </div>
+              <p class="context__instructions" data-ctx-instructions></p>
+              <p class="context__note">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-shield"></use></svg
+                ><span
+                  >Private to Studio North. Live AI can only use
+                  workspace-approved sources.</span
+                >
+              </p>
+              <span class="eyebrow context__label" tabindex="-1" data-ctx-label
+                >Project sources</span
+              >
+              <ul class="context__sources" data-ctx-sources></ul>
+            </aside>
+          </div>
+        </main>
+      </div>
+
+      <div data-component="app-bottom-nav"></div>
+    </div>
+
+    <script src="../js/components.js" defer></script>
+    <script src="../js/demo-data.js" defer></script>
+    <script src="../js/ai-service.js" defer></script>
+    <script src="../js/app-shell.js" defer></script>
+    <script src="../js/chat.js" defer></script>
+  </body>
+</html>
