@@ -130,6 +130,26 @@ window.aiwData = (() => {
         tint: "blue",
       },
     ],
+    prompts: [
+      {
+        id: "synthesize-research-themes",
+        title: "Synthesize research themes",
+        tag: "Active",
+        tint: "coral",
+      },
+      {
+        id: "find-decision-risks",
+        title: "Find decision risks",
+        tag: "Shared",
+        tint: "mint",
+      },
+      {
+        id: "turn-notes-into-a-brief",
+        title: "Turn notes into a brief",
+        tag: "Active",
+        tint: "blue",
+      },
+    ],
     projects: [
       {
         id: "website-redesign",
