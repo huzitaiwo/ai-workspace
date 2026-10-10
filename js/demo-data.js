@@ -24,6 +24,7 @@ window.aiwData = (() => {
       {
         id: "website-redesign-research",
         title: "Website Redesign Research",
+        project: "website-redesign",
         stage: "Source synthesis",
         updated: 14,
         tag: "Research",
@@ -32,6 +33,7 @@ window.aiwData = (() => {
       {
         id: "northstar-positioning-brief",
         title: "Northstar positioning brief",
+        project: "northstar-launch",
         stage: "Drafting",
         updated: 1500,
         tag: "Writing",
@@ -40,6 +42,7 @@ window.aiwData = (() => {
       {
         id: "customer-insight-themes",
         title: "Customer insight themes",
+        project: "insight-program",
         stage: "Analysis",
         updated: 4000,
         tag: "Analysis",
@@ -73,13 +76,20 @@ window.aiwData = (() => {
         meta: "8 sources",
         progress: 72,
         tint: "coral",
+        instructions:
+          "Prioritize UX research, conversion clarity, accessibility, and responsive behavior.",
+        sources: ["Interview synthesis.pdf", "Navigation audit.docx"],
       },
+      /* placeholder content below — replace with your own */
       {
         id: "northstar-launch",
         title: "Northstar Launch",
         meta: "5 active threads",
         progress: 46,
         tint: "mint",
+        instructions:
+          "Keep launch messaging consistent and cite the source behind every claim.",
+        sources: ["Positioning notes.docx", "Launch timeline.xlsx"],
       },
       {
         id: "insight-program",
@@ -87,6 +97,9 @@ window.aiwData = (() => {
         meta: "12 tagged notes",
         progress: 84,
         tint: "sand",
+        instructions:
+          "Group findings into themes and note how many sources support each one.",
+        sources: ["Customer interviews.pdf", "Insight themes.csv"],
       },
     ],
     activity: [

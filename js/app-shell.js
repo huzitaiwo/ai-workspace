@@ -118,7 +118,7 @@
             </div>
             <button class="icon-btn sidebar__close" type="button" aria-label="Close navigation" data-drawer-close>${icon("close")}</button>
           </div>
-          <a class="btn btn--primary btn--block btn--lg" href="chat.html">${icon("plus")}New conversation</a>
+          <a class="btn btn--primary btn--block btn--lg" href="chat.html?new=1">${icon("plus")}New conversation</a>
           <button class="search-row" type="button" data-open-search>${icon("search")}<span>Search</span><kbd class="kbd">${MOD} K</kbd></button>
         </div>
 
@@ -663,7 +663,7 @@
       }
       if (e.altKey && e.key.toLowerCase() === "n" && !e.metaKey && !e.ctrlKey) {
         e.preventDefault();
-        location.href = "chat.html";
+        location.href = "chat.html?new=1";
         return;
       }
       if (
