@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Reports — AI Workspace</title>
+    <meta
+      name="description"
+      content="Choose the context, configure the angle, and review a structured report with its source trail."
+    />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171a17"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/reports.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app" data-app data-page="reports" data-title="Reports">
+      <div data-component="app-sidebar"></div>
+
+      <div class="app__main">
+        <div data-component="app-topbar"></div>
+
+        <main class="page" id="main" tabindex="-1">
+          <noscript
+            ><p class="empty">
+              AI Workspace needs JavaScript to load your workspace.
+            </p></noscript
+          >
+
+          <header class="page-head">
+            <div>
+              <p class="eyebrow" data-rise style="--i: 0">Report generator</p>
+              <h1 data-rise style="--i: 1">
+                Turn evidence into a point of view.
+              </h1>
+              <p class="page-head__sub" data-rise style="--i: 2">
+                Choose the context. Configure the angle. Review a structured
+                result with its source trail.
+              </p>
+            </div>
+          </header>
+
+          <div class="rg">
+            <div class="rg-steps" data-rise style="--i: 3">
+              <section class="rg-step" aria-labelledby="step1">
+                <span class="rg-step__num" aria-hidden="true">1</span>
+                <h2 id="step1">Choose sources</h2>
+                <p class="rg-step__hint" id="step1-hint">
+                  Select the work that should inform this report.
+                </p>
+                <div class="rg-step__body">
+                  <fieldset
+                    aria-labelledby="step1"
+                    aria-describedby="step1-hint src-error"
+                  >
+                    <ul class="src-list" data-sources></ul>
+                  </fieldset>
+                  <p
+                    class="rg-error"
+                    id="src-error"
+                    role="alert"
+                    data-src-error
+                  >
+                    Choose at least one source to build a report.
+                  </p>
+                </div>
+              </section>
+
+              <section class="rg-step" aria-labelledby="step2">
+                <span class="rg-step__num" aria-hidden="true">2</span>
+                <h2 id="step2">Configure the report</h2>
+                <p class="rg-step__hint">
+                  Choose a concise frame for the decision ahead.
+                </p>
+                <div class="rg-step__body">
+                  <div class="cfg">
+                    <div class="field">
+                      <label for="rg-type">Report type</label>
+                      <div class="select">
+                        <select class="input" id="rg-type" data-type></select
+                        ><svg class="icon" aria-hidden="true">
+                          <use href="#i-chevron"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="rg-audience">Audience</label>
+                      <div class="select">
+                        <select
+                          class="input"
+                          id="rg-audience"
+                          data-audience
+                        ></select
+                        ><svg class="icon" aria-hidden="true">
+                          <use href="#i-chevron"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="rg-go">
+                    <button
+                      class="btn btn--primary btn--lg"
+                      type="button"
+                      data-generate
+                    >
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#i-sparkle"></use></svg
+                      >Generate report
+                      <svg class="icon icon--arrow" aria-hidden="true">
+                        <use href="#i-arrow"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <section
+              class="rp"
+              data-card
+              aria-label="Report preview"
+              data-rise
+              style="--i: 4"
+              tabindex="-1"
+            ></section>
+          </div>
+
+          <p
+            class="visually-hidden"
+            role="status"
+            aria-live="polite"
+            data-rg-status
+          ></p>
+        </main>
+      </div>
+
+      <div data-component="app-bottom-nav"></div>
+    </div>
+
+    <script src="../js/components.js" defer></script>
+    <script src="../js/demo-data.js" defer></script>
+    <script src="../js/app-shell.js" defer></script>
+    <script src="../js/reports.js" defer></script>
+  </body>
+</html>
