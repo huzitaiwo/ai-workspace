@@ -1140,3 +1140,18 @@ a.row:hover .tile {
   gap: 0.6rem;
   margin-top: 0.4rem;
 }
+
+.file-chip {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--c-coral) 14%, var(--surface-raised));
+  color: var(--c-coral);
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}

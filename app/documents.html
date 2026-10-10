@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Documents — AI Workspace</title>
+    <meta
+      name="description"
+      content="Securely store PDF, DOCX, TXT, and CSV sources. Extracted text is available only to your workspace AI context."
+    />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171a17"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/documents.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app" data-app data-page="documents" data-title="Documents">
+      <div data-component="app-sidebar"></div>
+
+      <div class="app__main">
+        <div data-component="app-topbar"></div>
+
+        <main class="page" id="main" tabindex="-1">
+          <noscript
+            ><p class="empty">
+              AI Workspace needs JavaScript to load your workspace.
+            </p></noscript
+          >
+
+          <header class="page-head">
+            <div>
+              <p class="eyebrow" data-rise style="--i: 0">Document library</p>
+              <h1 data-rise style="--i: 1">Evidence, made useful.</h1>
+              <p class="page-head__sub" data-rise style="--i: 2">
+                Securely store PDF, DOCX, TXT, and CSV sources. Extracted text
+                is available only to your workspace AI context.
+              </p>
+            </div>
+            <button
+              class="btn btn--primary btn--lg"
+              type="button"
+              data-upload
+              data-rise
+              style="--i: 2"
+            >
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-upload-cloud"></use></svg
+              >Upload source
+            </button>
+            <input
+              type="file"
+              hidden
+              multiple
+              accept=".pdf,.docx,.txt,.csv"
+              data-file
+            />
+          </header>
+
+          <div class="docs-toolbar" role="search" data-rise style="--i: 3">
+            <div class="search-field">
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-search"></use>
+              </svg>
+              <label class="visually-hidden" for="doc-search"
+                >Search documents</label
+              >
+              <input
+                class="input"
+                id="doc-search"
+                type="search"
+                placeholder="Search documents"
+                autocomplete="off"
+                data-search
+              />
+            </div>
+            <div class="menu-wrap">
+              <button
+                class="tool-btn"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls="menu-status"
+                data-menu-trigger
+                data-status-btn
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-filter"></use></svg
+                >Filter
+              </button>
+              <div
+                class="menu"
+                id="menu-status"
+                role="menu"
+                aria-label="Filter by status"
+                inert
+              ></div>
+            </div>
+            <div class="menu-wrap">
+              <button
+                class="tool-btn"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls="menu-projects"
+                data-menu-trigger
+              >
+                <span data-project-label>All projects</span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-chevron"></use>
+                </svg>
+              </button>
+              <div
+                class="menu"
+                id="menu-projects"
+                role="menu"
+                aria-label="Filter by project"
+                inert
+              ></div>
+            </div>
+            <span class="docs-count" data-count>4 documents</span>
+          </div>
+
+          <div class="docs" data-rise style="--i: 4">
+            <section class="docs-card" data-docs-card aria-label="Documents">
+              <div class="docs-scroll">
+                <table class="docs-table">
+                  <caption class="visually-hidden">
+                    Documents in your workspace
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col" class="col-name">Name</th>
+                      <th scope="col">Project</th>
+                      <th scope="col">Owner</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" class="col-act">
+                        <span class="visually-hidden">Actions</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody data-rows></tbody>
+                </table>
+              </div>
+            </section>
+
+            <aside class="doc-panel" aria-labelledby="sel-title">
+              <span class="eyebrow" id="sel-title">Selected document</span>
+              <div data-panel-body></div>
+            </aside>
+          </div>
+
+          <p
+            class="visually-hidden"
+            role="status"
+            aria-live="polite"
+            data-docs-status
+          ></p>
+        </main>
+      </div>
+
+      <div data-component="app-bottom-nav"></div>
+    </div>
+
+    <div
+      class="menu"
+      id="row-menu"
+      role="menu"
+      aria-label="Document actions"
+      inert
+    ></div>
+
+    <dialog class="dialog" id="rename-dialog" aria-labelledby="rename-title">
+      <form data-rename-form novalidate>
+        <div class="dialog__head">
+          <h2 id="rename-title">Rename document</h2>
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="Close"
+            data-dialog-close
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="field">
+          <label for="rename-input">Name</label>
+          <input
+            class="input"
+            id="rename-input"
+            name="name"
+            type="text"
+            maxlength="80"
+            autocomplete="off"
+            aria-describedby="rename-error"
+          />
+          <p class="field__error" id="rename-error" role="alert">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use></svg
+            ><span data-error-text></span>
+          </p>
+        </div>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close>
+            Cancel</button
+          ><button class="btn btn--primary" type="submit">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog
+      class="dialog"
+      id="delete-dialog"
+      aria-labelledby="delete-title"
+      aria-describedby="delete-text"
+    >
+      <div style="display: grid; gap: 1.1rem">
+        <div class="dialog__head">
+          <h2 id="delete-title">Delete this source?</h2>
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="Close"
+            data-dialog-close
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use>
+            </svg>
+          </button>
+        </div>
+        <p class="dialog__lead" id="delete-text" style="margin-top: 0">
+          <strong data-delete-name></strong> will be removed from the library
+          and can no longer be used as context. Past answers that used it stay
+          in their conversations.
+        </p>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close>
+            Cancel</button
+          ><button class="btn btn--danger" type="button" data-confirm-delete>
+            Delete source
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="../js/components.js" defer></script>
+    <script src="../js/demo-data.js" defer></script>
+    <script src="../js/app-shell.js" defer></script>
+    <script src="../js/documents.js" defer></script>
+  </body>
+</html>

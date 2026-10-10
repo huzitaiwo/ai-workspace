@@ -75,7 +75,7 @@
               "Upload a document",
               "documents.html?action=upload",
             )
-          : `<ul class="row-list">${data.documents.map(docRow).join("")}</ul>`,
+          : `<ul class="row-list">${data.documents.slice(0, 3).map(docRow).join("")}</ul>`,
       projects: () =>
         emptyDemo || !data.projects.length
           ? empty(

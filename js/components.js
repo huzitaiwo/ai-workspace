@@ -31,6 +31,11 @@
     <symbol id="i-panel" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M14.5 4.5v15"/></symbol>
     <symbol id="i-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3zM12 10v4M12 17v.01"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/></symbol>
+    <symbol id="i-upload-cloud" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 01-.6-8.96A6 6 0 0118 8.5 4 4 0 0117 18M12 12v7M9 14.5l3-3 3 3"/></symbol>
+    <symbol id="i-dots-v" viewBox="0 0 24 24"><path d="M12 5h.01M12 12h.01M12 19h.01" stroke-width="3"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.3l2.4 2.4 4.6-5"/></symbol>
+    <symbol id="i-circle-dashed" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" stroke-dasharray="2.6 3.2"/></symbol>
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="i-logo" viewBox="0 0 24 24"><path fill="currentColor" d="M9.6 4.8h7.4l-1.9 3.4H7.7zM7.9 10.3h8.8l-1.9 3.4H6zM6.5 15.8h7.4l-1.9 3.4H4.6z"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
