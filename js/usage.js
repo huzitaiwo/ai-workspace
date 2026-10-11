@@ -35,8 +35,8 @@
     };
     const members = [
       { name: data.owner, you: true, share: 52 },
-      { name: "Darius Bell", share: 31 },
-      { name: "Lena Ortiz", share: 17 },
+      { name: "Hassan Warwick", share: 31 },
+      { name: "Faridah Adepoju", share: 17 },
     ];
     const sum = (a) => a.reduce((x, y) => x + y, 0);
     const dayLabel = (n, i, opts) =>
