@@ -98,7 +98,7 @@ window.aiwData = (() => {
         size: "214 KB",
         status: "processing",
         project: "northstar-launch",
-        owner: "Darius Bell",
+        owner: "Hassan Warwick",
       },
       {
         id: "research-repository",
@@ -107,7 +107,7 @@ window.aiwData = (() => {
         size: "124 KB",
         status: "ready",
         project: "insight-program",
-        owner: "Lena Ortiz",
+        owner: "Faridah Adepoju",
       },
     ],
     knowledge: [
