@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Prompt - AI Workspace</title>
+    <meta name="robots" content="noindex" />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171a17"
+      media="(prefers-color-scheme: dark)"
+    />
+    png
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/detail.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app" data-app data-page="prompts" data-title="Prompt Library">
+      <div data-component="app-sidebar"></div>
+
+      <div class="app__main">
+        <div data-component="app-topbar"></div>
+
+        <main class="page" id="main" tabindex="-1">
+          <noscript
+            ><p class="empty">
+              AI Workspace needs JavaScript to load your workspace.
+            </p></noscript
+          >
+
+          <div data-notfound hidden>
+            <a class="back" href="prompts.html"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg
+              >Prompt Library</a
+            >
+            <div class="empty">
+              <span class="tile tile--coral"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-search"></use></svg
+              ></span>
+              <h3>We couldn’t find that prompt</h3>
+              <p>
+                It may have been created in a session that has ended. Head back
+                to the library to pick another.
+              </p>
+              <a class="btn btn--primary btn--sm" href="prompts.html"
+                >Back to the library
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </div>
+          </div>
+
+          <div data-found hidden>
+            <a class="back" href="prompts.html"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg
+              >Prompt Library</a
+            >
+
+            <header class="d-head">
+              <div>
+                <p class="eyebrow">Reusable prompt</p>
+                <h1>Prompt</h1>
+                <p class="d-head__sub">
+                  Write the instructions once, then fill in the variables each
+                  time you use it.
+                </p>
+              </div>
+              <div class="d-actions">
+                <button class="btn btn--primary btn--lg" type="button" data-run>
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-chat"></use></svg
+                  >Run in chat
+                </button>
+              </div>
+            </header>
+
+            <div class="pr">
+              <form class="pr-form" data-form novalidate>
+                <div class="field">
+                  <label for="pr-name">Name</label>
+                  <input
+                    class="input"
+                    id="pr-name"
+                    type="text"
+                    maxlength="60"
+                    autocomplete="off"
+                    aria-describedby="pr-name-error"
+                  />
+                  <p class="field__error" id="pr-name-error" role="alert">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-close"></use></svg
+                    ><span data-error-text></span>
+                  </p>
+                </div>
+                <div class="field">
+                  <label for="pr-desc">Description</label>
+                  <input
+                    class="input"
+                    id="pr-desc"
+                    type="text"
+                    maxlength="120"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="pr-form__row">
+                  <div class="field">
+                    <label for="pr-cat">Category</label>
+                    <div class="select">
+                      <select class="input" id="pr-cat"></select
+                      ><svg class="icon" aria-hidden="true">
+                        <use href="#i-chevron"></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="pr-vis">Visibility</label>
+                    <div class="select">
+                      <select class="input" id="pr-vis">
+                        <option value="private">Private</option>
+                        <option value="workspace">Workspace</option>
+                        <option value="link">Shared link</option></select
+                      ><svg class="icon" aria-hidden="true">
+                        <use href="#i-chevron"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="pr-ins">Instructions</label>
+                  <textarea
+                    class="input"
+                    id="pr-ins"
+                    aria-describedby="pr-ins-hint pr-ins-error"
+                  ></textarea>
+                  <p class="field__hint" id="pr-ins-hint">
+                    Use variables like {{company}}, {{audience}}, or {{tone}}.
+                  </p>
+                  <p class="field__error" id="pr-ins-error" role="alert">
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-close"></use></svg
+                    ><span data-error-text></span>
+                  </p>
+                </div>
+                <div class="pr-form__foot">
+                  <button
+                    class="btn btn--primary"
+                    type="submit"
+                    data-save
+                    disabled
+                  >
+                    Save prompt
+                  </button>
+                  <span class="dirty" data-dirty role="status"
+                    >All changes saved</span
+                  >
+                </div>
+              </form>
+
+              <div class="pr-side">
+                <section class="pr-box" aria-labelledby="vars-title">
+                  <span class="eyebrow">Variables</span>
+                  <h2 id="vars-title">Fill in the blanks</h2>
+                  <div class="pr-vars" data-vars></div>
+                </section>
+                <section class="pr-box" aria-labelledby="prev-title">
+                  <span class="eyebrow">Preview</span>
+                  <h2 id="prev-title">What the AI will read</h2>
+                  <p class="pr-preview" data-preview></p>
+                  <div class="pr-actions">
+                    <button class="btn btn--secondary" type="button" data-test>
+                      Test run
+                    </button>
+                  </div>
+                  <div class="pr-result" data-result aria-live="polite"></div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <div data-component="app-bottom-nav"></div>
+    </div>
+
+    <script src="../js/components.js" defer></script>
+    <script src="../js/demo-data.js" defer></script>
+    <script src="../js/ai-service.js" defer></script>
+    <script src="../js/app-shell.js" defer></script>
+    <script src="../js/prompt.js" defer></script>
+  </body>
+</html>
