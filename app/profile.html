@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Profile - AI Workspace</title>
+    <meta
+      name="description"
+      content="Manage your details, appearance, notifications, security, and data."
+    />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171a17"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/profile.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app" data-app data-page="profile" data-title="Profile">
+      <div data-component="app-sidebar"></div>
+
+      <div class="app__main">
+        <div data-component="app-topbar"></div>
+
+        <main class="page" id="main" tabindex="-1">
+          <noscript
+            ><p class="empty">
+              AI Workspace needs JavaScript to load your workspace.
+            </p></noscript
+          >
+
+          <header class="page-head">
+            <div>
+              <p class="eyebrow" data-rise style="--i: 0">Your profile</p>
+              <h1 data-rise style="--i: 1">
+                Personal details and preferences.
+              </h1>
+              <p class="page-head__sub" data-rise style="--i: 2">
+                Manage how you appear, and how the workspace reaches you.
+              </p>
+            </div>
+          </header>
+
+          <div class="p-stack">
+            <!-- Profile -->
+            <section
+              class="p-card"
+              aria-labelledby="pc-profile"
+              data-rise
+              style="--i: 3"
+            >
+              <span class="eyebrow">Profile</span>
+              <h2 id="pc-profile">About you</h2>
+              <div class="p-who">
+                <span class="avatar p-avatar" data-avatar aria-hidden="true"
+                  >H</span
+                >
+                <div>
+                  <strong data-who-name>Handsome</strong
+                  ><span>Owner · Studio North</span>
+                </div>
+              </div>
+              <form class="p-form" data-profile-form novalidate>
+                <div class="p-form__row">
+                  <div class="field">
+                    <label for="p-name">Name</label
+                    ><input
+                      class="input"
+                      id="p-name"
+                      name="name"
+                      type="text"
+                      maxlength="40"
+                      autocomplete="name"
+                      aria-describedby="p-name-error"
+                    />
+                    <p class="field__error" id="p-name-error" role="alert">
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#i-close"></use></svg
+                      ><span data-error-text></span>
+                    </p>
+                  </div>
+                  <div class="field">
+                    <label for="p-email">Email</label
+                    ><input
+                      class="input"
+                      id="p-email"
+                      name="email"
+                      type="email"
+                      inputmode="email"
+                      autocomplete="email"
+                      placeholder="you@example.com"
+                      aria-describedby="p-email-error"
+                    />
+                    <p class="field__error" id="p-email-error" role="alert">
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#i-close"></use></svg
+                      ><span data-error-text></span>
+                    </p>
+                  </div>
+                </div>
+                <button class="btn btn--primary" type="submit">
+                  Save profile
+                </button>
+              </form>
+            </section>
+
+            <!-- Appearance -->
+            <section
+              class="p-card"
+              aria-labelledby="pc-theme"
+              data-rise
+              style="--i: 4"
+            >
+              <span class="eyebrow">Appearance</span>
+              <h2 id="pc-theme">Theme</h2>
+              <form data-theme-form>
+                <fieldset
+                  style="border: 0; margin: 0; padding: 0; min-width: 0"
+                >
+                  <legend class="visually-hidden">Theme</legend>
+                  <div class="opt-list opt-list--3">
+                    <label class="opt"
+                      ><input type="radio" name="theme" value="light" /><span
+                        ><strong>Light</strong
+                        ><small>Warm and calm.</small></span
+                      ></label
+                    >
+                    <label class="opt"
+                      ><input type="radio" name="theme" value="dark" /><span
+                        ><strong>Dark</strong
+                        ><small>Easy on the eyes.</small></span
+                      ></label
+                    >
+                    <label class="opt"
+                      ><input type="radio" name="theme" value="system" /><span
+                        ><strong>System</strong
+                        ><small>Match your device.</small></span
+                      ></label
+                    >
+                  </div>
+                </fieldset>
+              </form>
+            </section>
+
+            <!-- Notifications -->
+            <section
+              class="p-card"
+              aria-labelledby="pc-notif"
+              data-rise
+              style="--i: 5"
+            >
+              <span class="eyebrow">Notifications</span>
+              <h2 id="pc-notif">What should reach you</h2>
+              <div class="p-rows">
+                <div class="p-row">
+                  <div>
+                    <strong id="n1">Report ready</strong>
+                    <p id="n1d">Tell me when a report finishes generating.</p>
+                  </div>
+                  <button
+                    class="switch"
+                    type="button"
+                    role="switch"
+                    aria-checked="true"
+                    aria-labelledby="n1"
+                    aria-describedby="n1d"
+                    data-switch="report"
+                  ></button>
+                </div>
+                <div class="p-row">
+                  <div>
+                    <strong id="n2">Document processed</strong>
+                    <p id="n2d">
+                      Tell me when an uploaded source is ready for analysis.
+                    </p>
+                  </div>
+                  <button
+                    class="switch"
+                    type="button"
+                    role="switch"
+                    aria-checked="true"
+                    aria-labelledby="n2"
+                    aria-describedby="n2d"
+                    data-switch="document"
+                  ></button>
+                </div>
+                <div class="p-row">
+                  <div>
+                    <strong id="n3">Mentions and comments</strong>
+                    <p id="n3d">Tell me when someone mentions me or replies.</p>
+                  </div>
+                  <button
+                    class="switch"
+                    type="button"
+                    role="switch"
+                    aria-checked="true"
+                    aria-labelledby="n3"
+                    aria-describedby="n3d"
+                    data-switch="mentions"
+                  ></button>
+                </div>
+                <div class="p-row">
+                  <div>
+                    <strong id="n4">Product updates</strong>
+                    <p id="n4d">Occasional notes about what’s new.</p>
+                  </div>
+                  <button
+                    class="switch"
+                    type="button"
+                    role="switch"
+                    aria-checked="false"
+                    aria-labelledby="n4"
+                    aria-describedby="n4d"
+                    data-switch="product"
+                  ></button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Security -->
+            <section
+              class="p-card"
+              aria-labelledby="pc-sec"
+              data-rise
+              style="--i: 6"
+            >
+              <span class="eyebrow">Security</span>
+              <h2 id="pc-sec">Keep your account safe</h2>
+              <div class="p-rows">
+                <div class="p-row">
+                  <div>
+                    <strong id="s1">Two-factor authentication</strong>
+                    <p id="s1d">
+                      Demo only. No authenticator is connected in this project.
+                    </p>
+                  </div>
+                  <button
+                    class="switch"
+                    type="button"
+                    role="switch"
+                    aria-checked="false"
+                    aria-labelledby="s1"
+                    aria-describedby="s1d"
+                    data-switch="twofa"
+                  ></button>
+                </div>
+                <div class="p-row">
+                  <div>
+                    <strong>Password</strong>
+                    <p>Change the password you use to sign in.</p>
+                  </div>
+                  <button
+                    class="btn btn--secondary"
+                    type="button"
+                    data-open-password
+                  >
+                    Change password
+                  </button>
+                </div>
+                <div class="p-row">
+                  <div>
+                    <strong>Active sessions</strong>
+                    <p>This browser · Signed in now</p>
+                  </div>
+                  <span class="badge-now">This device</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Data -->
+            <section
+              class="p-card p-danger"
+              aria-labelledby="pc-data"
+              data-rise
+              style="--i: 7"
+            >
+              <span class="eyebrow">Data</span>
+              <h2 id="pc-data">Your data</h2>
+              <div class="p-rows">
+                <div class="p-row">
+                  <div>
+                    <strong>Export my data</strong>
+                    <p>
+                      Download everything this demo has saved in your browser as
+                      a JSON file.
+                    </p>
+                  </div>
+                  <button class="btn btn--secondary" type="button" data-export>
+                    Export
+                  </button>
+                </div>
+                <div class="p-row">
+                  <div>
+                    <strong>Delete my data</strong>
+                    <p>
+                      Remove everything saved in this browser, including drafts,
+                      projects, and settings. This can’t be undone.
+                    </p>
+                  </div>
+                  <button
+                    class="btn btn--danger"
+                    type="button"
+                    data-open-delete
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+
+      <div data-component="app-bottom-nav"></div>
+    </div>
+
+    <dialog class="dialog" id="password-dialog" aria-labelledby="pw-title">
+      <form data-password-form novalidate>
+        <div class="dialog__head">
+          <h2 id="pw-title">Change password</h2>
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="Close"
+            data-dialog-close
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use>
+            </svg>
+          </button>
+        </div>
+        <p class="dialog__lead">
+          This is a demo, so no real password is changed.
+        </p>
+        <div class="field">
+          <label for="pw-current">Current password</label
+          ><input
+            class="input"
+            id="pw-current"
+            name="current"
+            type="password"
+            autocomplete="current-password"
+            aria-describedby="pw-current-e"
+          />
+          <p class="field__error" id="pw-current-e" role="alert">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use></svg
+            ><span data-error-text></span>
+          </p>
+        </div>
+        <div class="field">
+          <label for="pw-next">New password</label
+          ><input
+            class="input"
+            id="pw-next"
+            name="next"
+            type="password"
+            autocomplete="new-password"
+            aria-describedby="pw-next-e"
+          />
+          <p class="field__error" id="pw-next-e" role="alert">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use></svg
+            ><span data-error-text></span>
+          </p>
+        </div>
+        <div class="field">
+          <label for="pw-confirm">Confirm new password</label
+          ><input
+            class="input"
+            id="pw-confirm"
+            name="confirm"
+            type="password"
+            autocomplete="new-password"
+            aria-describedby="pw-confirm-e"
+          />
+          <p class="field__error" id="pw-confirm-e" role="alert">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use></svg
+            ><span data-error-text></span>
+          </p>
+        </div>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close>
+            Cancel</button
+          ><button class="btn btn--primary" type="submit">
+            Update password
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog
+      class="dialog"
+      id="delete-dialog"
+      aria-labelledby="del-title"
+      aria-describedby="del-text"
+    >
+      <div style="display: grid; gap: 1.1rem">
+        <div class="dialog__head">
+          <h2 id="del-title">Delete your data?</h2>
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="Close"
+            data-dialog-close
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use>
+            </svg>
+          </button>
+        </div>
+        <p class="dialog__lead" id="del-text" style="margin-top: 0">
+          This removes everything saved in this browser and takes you back to
+          the home page. Type <strong>delete</strong> to confirm.
+        </p>
+        <div class="field">
+          <label for="del-confirm">Confirmation</label
+          ><input
+            class="input"
+            id="del-confirm"
+            data-confirm-text
+            type="text"
+            autocomplete="off"
+          />
+        </div>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close>
+            Cancel</button
+          ><button
+            class="btn btn--danger"
+            type="button"
+            data-confirm-delete
+            disabled
+          >
+            Delete my data
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="../js/components.js" defer></script>
+    <script src="../js/demo-data.js" defer></script>
+    <script src="../js/app-shell.js" defer></script>
+    <script src="../js/profile.js" defer></script>
+  </body>
+</html>
