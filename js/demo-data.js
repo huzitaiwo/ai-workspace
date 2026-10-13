@@ -136,18 +136,33 @@ window.aiwData = (() => {
         title: "Synthesize research themes",
         tag: "Active",
         tint: "coral",
+        category: "Research",
+        visibility: "workspace",
+        description: "Group what the sources say into a few clear themes.",
+        instructions:
+          "Review the selected sources for {{company}}. Group what you find into three to five themes. For each theme, give a one-sentence summary, the strongest supporting evidence, and the source it came from. Write for {{audience}} in a {{tone}} tone.",
       },
       {
         id: "find-decision-risks",
         title: "Find decision risks",
         tag: "Shared",
         tint: "mint",
+        category: "Business",
+        visibility: "workspace",
+        description: "Surface the risks that could change the decision ahead.",
+        instructions:
+          "Read {{document}} and list the risks that could affect the decision ahead. For each risk, say how likely it is, what it would affect, and what evidence supports it. Finish with the one risk {{audience}} should discuss first.",
       },
       {
         id: "turn-notes-into-a-brief",
         title: "Turn notes into a brief",
         tag: "Active",
         tint: "blue",
+        category: "Productivity",
+        visibility: "private",
+        description: "Turn rough notes into a one-page brief.",
+        instructions:
+          "Turn these notes into a one-page brief for {{audience}}. Start with the decision to be made, then the context, the options, and a recommendation. Keep the tone {{tone}}.",
       },
     ],
     projects: [
@@ -228,4 +243,25 @@ window.aiwData = (() => {
       },
     ],
   };
+})();
+
+/* ---- Local overrides: profile name, project edits (rename, instructions, archive, delete) ---- */
+(() => {
+  const d = window.aiwData;
+  try {
+    const prof = JSON.parse(localStorage.getItem("aiw-profile"));
+    if (prof && prof.name) d.owner = prof.name;
+  } catch (e) {}
+  d.projects.forEach((p) => {
+    p.defaultInstructions = p.instructions;
+    p.baseTag = p.tag;
+    try {
+      const o = JSON.parse(localStorage.getItem("aiw-project-" + p.id));
+      if (o) {
+        Object.assign(p, o);
+        if (o.archived) p.tag = "Archived";
+      }
+    } catch (e) {}
+  });
+  d.projects = d.projects.filter((p) => !p.deleted);
 })();

@@ -24,6 +24,10 @@
       open: null,
     };
 
+    const wantedId = params.get("id");
+    if (wantedId && docs.some((d) => d.id === wantedId))
+      state.selected = wantedId;
+
     const el = {
       body: $("[data-rows]"),
       card: $("[data-docs-card]"),

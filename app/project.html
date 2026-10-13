@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Project — AI Workspace</title>
+    <meta name="robots" content="noindex" />
+    <meta
+      name="theme-color"
+      content="#f6f5f0"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#171a17"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/detail.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="app" data-app data-page="projects" data-title="Projects">
+      <div data-component="app-sidebar"></div>
+
+      <div class="app__main">
+        <div data-component="app-topbar"></div>
+
+        <main class="page" id="main" tabindex="-1">
+          <noscript
+            ><p class="empty">
+              AI Workspace needs JavaScript to load your workspace.
+            </p></noscript
+          >
+
+          <div data-notfound hidden>
+            <a class="back" href="projects.html"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg
+              >All projects</a
+            >
+            <div class="empty">
+              <span class="tile tile--coral"
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-folder"></use></svg
+              ></span>
+              <h3>We couldn’t find that project</h3>
+              <p>
+                It may have been deleted, or created in a session that has
+                ended. Head back to your projects to pick another.
+              </p>
+              <a class="btn btn--primary btn--sm" href="projects.html"
+                >Back to projects
+                <svg class="icon icon--arrow" aria-hidden="true">
+                  <use href="#i-arrow"></use></svg
+              ></a>
+            </div>
+          </div>
+
+          <div data-found hidden>
+            <a class="back" href="projects.html"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-arrow"></use></svg
+              >All projects</a
+            >
+
+            <header class="d-head">
+              <div>
+                <p class="eyebrow">
+                  Project <span class="tag" data-tag>Active</span>
+                </p>
+                <h1>Project</h1>
+                <p class="d-head__sub" data-meta></p>
+              </div>
+              <div class="d-actions">
+                <a
+                  class="btn btn--primary btn--lg"
+                  data-new-chat
+                  href="chat.html?new=1"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-plus"></use></svg
+                  >New conversation</a
+                >
+                <div class="menu-wrap">
+                  <button
+                    class="icon-btn"
+                    type="button"
+                    aria-label="Project actions"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                    aria-controls="menu-project"
+                    data-menu-trigger
+                  >
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-dots"></use>
+                    </svg>
+                  </button>
+                  <div
+                    class="menu menu--end"
+                    id="menu-project"
+                    role="menu"
+                    aria-label="Project actions"
+                    inert
+                  >
+                    <button
+                      class="menu__item"
+                      type="button"
+                      role="menuitem"
+                      data-act="rename"
+                    >
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#i-pen"></use></svg
+                      >Rename project
+                    </button>
+                    <button
+                      class="menu__item"
+                      type="button"
+                      role="menuitem"
+                      data-act="archive"
+                    >
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#i-folder"></use></svg
+                      ><span data-archive-label>Archive project</span>
+                    </button>
+                    <div class="menu__sep" role="separator"></div>
+                    <button
+                      class="menu__item"
+                      type="button"
+                      role="menuitem"
+                      data-act="delete"
+                    >
+                      <svg class="icon" aria-hidden="true">
+                        <use href="#i-close"></use></svg
+                      >Delete project
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </header>
+
+            <div class="pj">
+              <div class="pj-main">
+                <div class="tabs" role="tablist" aria-label="Project content">
+                  <button
+                    class="tab"
+                    role="tab"
+                    id="tab-conv"
+                    data-tab="conversations"
+                    aria-selected="true"
+                  >
+                    Conversations <span class="tag" data-count-conv>0</span>
+                  </button>
+                  <button
+                    class="tab"
+                    role="tab"
+                    id="tab-docs"
+                    data-tab="documents"
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    Documents <span class="tag" data-count-docs>0</span>
+                  </button>
+                </div>
+                <div
+                  class="pj-panel"
+                  role="tabpanel"
+                  data-panel
+                  tabindex="0"
+                ></div>
+              </div>
+
+              <aside class="ins" aria-labelledby="ins-title">
+                <span class="eyebrow">Project context</span>
+                <h2 id="ins-title">Instructions</h2>
+                <p class="ins__lead">
+                  Added to every conversation in this project, so answers start
+                  from the same frame.
+                </p>
+                <label class="visually-hidden" for="ins-box"
+                  >Project instructions</label
+                >
+                <textarea
+                  class="input"
+                  id="ins-box"
+                  data-instructions
+                  placeholder="Tell the AI what this project is about and what to prioritize."
+                ></textarea>
+                <div class="ins__foot">
+                  <button
+                    class="btn btn--primary"
+                    type="button"
+                    data-save-ins
+                    disabled
+                  >
+                    Save
+                  </button>
+                  <button
+                    class="btn btn--secondary"
+                    type="button"
+                    data-reset-ins
+                  >
+                    Reset
+                  </button>
+                  <span
+                    class="ins__count"
+                    data-ins-count
+                    aria-live="off"
+                  ></span>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <div data-component="app-bottom-nav"></div>
+    </div>
+
+    <dialog class="dialog" id="rename-dialog" aria-labelledby="rename-title">
+      <form data-rename-form novalidate>
+        <div class="dialog__head">
+          <h2 id="rename-title">Rename project</h2>
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="Close"
+            data-dialog-close
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="field">
+          <label for="rename-input">Project name</label>
+          <input
+            class="input"
+            id="rename-input"
+            data-rename-input
+            type="text"
+            maxlength="40"
+            autocomplete="off"
+            aria-describedby="rename-error"
+          />
+          <p class="field__error" id="rename-error" role="alert">
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use></svg
+            ><span data-error-text></span>
+          </p>
+        </div>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close>
+            Cancel</button
+          ><button class="btn btn--primary" type="submit">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog
+      class="dialog"
+      id="delete-dialog"
+      aria-labelledby="delete-title"
+      aria-describedby="delete-text"
+    >
+      <div style="display: grid; gap: 1.1rem">
+        <div class="dialog__head">
+          <h2 id="delete-title">Delete this project?</h2>
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="Close"
+            data-dialog-close
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-close"></use>
+            </svg>
+          </button>
+        </div>
+        <p class="dialog__lead" id="delete-text" style="margin-top: 0">
+          <strong data-delete-name></strong> and its instructions will be
+          removed. Conversations and documents stay in your workspace.
+        </p>
+        <div class="dialog__actions">
+          <button class="btn btn--secondary" type="button" data-dialog-close>
+            Cancel</button
+          ><button class="btn btn--danger" type="button" data-confirm-delete>
+            Delete project
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="../js/components.js" defer></script>
+    <script src="../js/demo-data.js" defer></script>
+    <script src="../js/app-shell.js" defer></script>
+    <script src="../js/project.js" defer></script>
+  </body>
+</html>

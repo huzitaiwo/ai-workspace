@@ -511,7 +511,7 @@
         icon: "folder",
         title: p.title,
         meta: "Project",
-        href: `projects.html?id=${p.id}`,
+        href: `project.html?id=${p.id}`,
       })),
       Documents: data.documents.map((d) => ({
         kind: "content",

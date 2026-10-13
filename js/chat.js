@@ -79,6 +79,8 @@
     });
 
     const isNew = params.get("new") === "1";
+    if (isNew && projects[params.get("project")])
+      state.project = params.get("project");
     const wanted = params.get("id") || SEED_ID;
     const session =
       data.sessions.find((s) => s.id === wanted) ||

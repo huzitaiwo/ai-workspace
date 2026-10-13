@@ -49,7 +49,7 @@
 
     const projectCard = (
       p,
-    ) => `<a class="project-card" href="projects.html?id=${p.id}">
+    ) => `<a class="project-card" href=project.html?id=${p.id}">
       <span class="project-card__top"><span class="tile tile--${p.tint}">${icon("folder")}</span><span><strong>${esc(p.title)}</strong><small>${esc(p.meta)}</small></span></span>
       <span class="project-card__progress"><span class="meter" role="img" aria-label="${p.progress}% complete" style="--value:${p.progress}%"><span></span></span><span aria-hidden="true">${p.progress}%</span></span></a>`;
 

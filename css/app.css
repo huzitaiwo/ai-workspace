@@ -1234,3 +1234,12 @@ a.row:hover .tile {
   line-height: 1.5;
   color: var(--text-muted);
 }
+
+.btn--danger {
+  background: var(--error);
+  color: #fff;
+}
+.btn--danger:hover {
+  filter: brightness(1.08);
+  box-shadow: var(--shadow-md);
+}

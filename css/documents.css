@@ -295,12 +295,3 @@
   padding-left: 2.6rem;
   list-style: disc;
 }
-
-.btn--danger {
-  background: var(--error);
-  color: #fff;
-}
-.btn--danger:hover {
-  filter: brightness(1.08);
-  box-shadow: var(--shadow-md);
-}

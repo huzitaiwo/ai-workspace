@@ -26,7 +26,7 @@
       <span class="skeleton" style="width:2.1rem;height:2.1rem;border-radius:.55rem"></span>
       <span class="row__body"><span class="skeleton" style="width:40%;height:.75rem"></span><span class="skeleton" style="width:60%;height:.6rem;margin-top:.5rem"></span></span></li>`;
 
-    const row = (p) => `<li><a class="row" href="prompts.html?id=${p.id}">
+    const row = (p) => `<li><a class="row" href="prompt.html?id=${p.id}">
       <span class="tile tile--${p.tint}">${icon("search")}</span>
       <span class="row__body"><strong>${esc(p.title)}</strong><span>Updated recently · Available in this demo</span></span>
       <span class="tag">${esc(p.tag)}</span>${icon("chevron-right", "row__go")}</a></li>`;
